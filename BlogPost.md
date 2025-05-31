@@ -1,6 +1,6 @@
 # Model Context Protocol: The Universal Standard Revolutionizing AI Integration
 
-I have been hearing a lot about MCP (Model Context Protocol) in my feeds. So what is MCP and why is the next big thing in AI. I set out to find out more and in the process ended up building a suite of MCP servers to help me in travel planning.
+I have been hearing a lot about MCP (Model Context Protocol) in my feeds. So what is MCP and why is it the next big thing in AI. I set out to find out more and in the process ended up building a suite of MCP servers to help me in travel planning.
 
 But before I jump in with the project, let us get on the same page on what MCP is (*if you would rather want to hear about the project first, head on to the section: **Real-World Project: The Intelligent Travel Assistant***).
 

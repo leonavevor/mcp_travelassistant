@@ -2,7 +2,7 @@
 
 I have been hearing a lot about MCP (Model Context Protocol) in my feeds. So what is MCP and why is the next big thing in AI. I set out to find out more and in the process ended up building a suite of MCP servers to help me in travel planning.
 
-But before I jump in with the project, let us get on the same page on what MCP is (*if you rather want to hear about the project first, head on to the section: **Real-World Project: The Intelligent Travel Assistant***).
+But before I jump in with the project, let us get on the same page on what MCP is (*if you would rather want to hear about the project first, head on to the section: **Real-World Project: The Intelligent Travel Assistant***).
 
 ## The Predicament that led to MCP
 
@@ -10,11 +10,17 @@ Apparently, the AI revolution was hitting a wall—but not the one you might exp
 
 Imagine trying to build an intelligent travel assistant today. You want users to simply ask: *"Find flights, hotels and things to do for a family of two in Banff, Alberta in June considering weather conditions. My budget is $5000 USD"* and receive comprehensive, coordinated results. But to make this happen, you must manually integrate six different APIs—each with unique authentication, different data formats, inconsistent error handling, and separate rate limiting schemes. One API change breaks your entire system. Adding a new travel service requires weeks of custom integration work even with powerful agent orchestration frameworks like [LangGraph](https://www.langchain.com/langgraph).
 
+![AI Agent Flow](images/ai-agent-process-flow.png)
+
 But what if there was a way to solve this integration nightmare once and for all? What if LLMs could discover and orchestrate multiple services as easily as plugging devices into a USB-C port?
 
 ## The Dawn of Universal AI Integration
 
-Enter the Model Context Protocol (MCP)—an open standard that's about to transform how AI agents interact with the world. Think of MCP as the USB-C port for AI applications: a universal connector that standardizes how LLMs access external systems, from travel APIs and databases to local files and enterprise tools.
+Enter the Model Context Protocol (MCP)—an open standard that's about to transform how AI agents interact with the world. Using MCP allows AI agents to interact with external tools and data sources by discovering, understanding, and using various capabilities provided by external systems. MCP servers implement MCP protocol by providing tools, resources, and contextual information that AI assistants can use via MCP clients. Think of MCP servers as wrappers around service providers such as Google Drive for storing documents, Google Calendar for setting up appointments, Stripe for making payments etc. Multiple MCP Servers can be attached to a single MCP Client running on MCP Hosts such as Claude Desktop, Cursor IDE etc. This beats having to connect each service provider separately to your agent through their APIs and deal with the idiosyncrasies of each API provider.
+
+![MCP Process Flow](images/mcp-process-flow.png)
+
+As a result, MCP allows AI models to extend their functionality beyond their own training data by accessing real-time information and executing specific tasks through standardized interfaces. Think of MCP as the USB-C port for AI applications: a universal connector that standardizes how LLMs access external systems, from travel APIs and databases to local files and enterprise tools.
 
 But MCP isn't just another API wrapper. It is a reimagining of how AI agents should communicate with external systems and designed from the ground up to address the unique challenges of LLMs integrating with external world to make it really useful in ways other than generating beautiful prose.
 
@@ -74,6 +80,10 @@ MCP's power comes from three carefully designed primitives, each addressing a sp
 
 **Prompts** create reusable templates that guide AI behavior for specific travel scenarios. A "plan weekend getaway" prompt might include context about balancing activity types, considering weather patterns, and optimizing for budget constraints. Server authors can expose prompt libraries that turn expert travel planning knowledge into shareable, discoverable assets.
 
+**Here is an anatomy of a sample MCP server that utilizies these three prompts:**
+
+![anatomy of mcp server](images/mcp-server-anatomy.png)
+
 But here's where MCP truly shines: these primitives work together seamlessly, creating emergent capabilities that are greater than the sum of their parts.
 
 ---
@@ -105,7 +115,7 @@ For Flight Search, Hotel Search, Event Search and Finance Search, I used Google'
 
 Here's how Claude orchestrates the MCP servers to fulfill this complex request:
 
-![Orchestration Flow](mcp_tool_orchestration_flow.png)
+![Orchestration Flow](images/mcp_tool_orchestration_flow.png)
 
 #### Step 1: Flight Discovery ✈️
 

@@ -1,12 +1,12 @@
 # Model Context Protocol: The Universal Standard Revolutionizing AI Integration
 
-I have been hearing a lot about MCP (Model Context Protocol) in my feeds. So what is MCP and why is it the next big thing in AI. I set out to find out more and in the process ended up building a suite of MCP servers to help me in travel planning.
+I have been hearing a lot about MCP (Model Context Protocol) in my feeds. So what is MCP and why is it the next big thing in AI? I set out to find out more and in the process ended up building a suite of MCP servers to help me in travel planning.
 
-But before I jump in with the project, let us get on the same page on what MCP is (*if you would rather want to hear about the project first, head on to the section: **Real-World Project: The Intelligent Travel Assistant***).
+But before I jump in with the project, let us understand what MCP is (*if you would rather want to hear about the project first, head on to the section: **Real-World Project: The Intelligent Travel Assistant***).
 
 ## The Predicament that led to MCP
 
-Apparently, the AI revolution was hitting a wall—but not the one you might expect. While LLMs have achieved breathtaking capabilities in reasoning and generation, they remain frustratingly isolated in data silos, unable to seamlessly interact with the rich ecosystem of tools and information sources that could unleash their true potential. Every new integration requires custom logic, fragmented authentication schemes, and brittle connections that break when you need them most.
+Apparently, the AI revolution was hitting a wall — but not the one you might expect. While LLMs have achieved breathtaking capabilities in reasoning and generation, they remain frustratingly isolated in data silos, unable to seamlessly interact with the rich ecosystem of tools and information sources that could unleash their true potential. Every new integration requires custom logic, different authentication schemes, and brittle connections that break when you need them most.
 
 Imagine trying to build an intelligent travel assistant today. You want users to simply ask: *"Find flights, hotels and things to do for a family of two in Banff, Alberta in June considering weather conditions. My budget is $5000 USD"* and receive comprehensive, coordinated results. But to make this happen, you must manually integrate six different APIs—each with unique authentication, different data formats, inconsistent error handling, and separate rate limiting schemes. One API change breaks your entire system. Adding a new travel service requires weeks of custom integration work even with powerful agent orchestration frameworks like [LangGraph](https://www.langchain.com/langgraph).
 
@@ -16,12 +16,16 @@ But what if there was a way to solve this integration nightmare once and for all
 
 ## The Dawn of Universal AI Integration
 
-Enter the Model Context Protocol (MCP)—an open standard that's about to transform how AI agents interact with the world. Using MCP allows AI agents to interact with external tools and data sources by discovering, understanding, and using various capabilities provided by external systems. MCP servers implement MCP protocol by providing tools, resources, and contextual information that AI assistants can use via MCP clients. Think of MCP servers as wrappers around service providers such as Google Drive for storing documents, Google Calendar for setting up appointments, Stripe for making payments etc. Multiple MCP Servers can be attached to a single MCP Client running on MCP Hosts such as Claude Desktop, Cursor IDE etc. This beats having to connect each service provider separately to your agent through their APIs and deal with the idiosyncrasies of each API provider.
+Enter the Model Context Protocol (MCP)—an open standard that has the potential to transform how AI agents interact with the world. Using MCP allows AI agents to interact with external tools and data sources by discovering, understanding, and using various capabilities provided by external systems. You no longer have to wire the orchestration.
+
+MCP servers implement MCP protocol by providing tools, resources, and contextual information that AI assistants can use via MCP clients. Think of MCP servers as wrappers around service providers such as Google Drive for storing documents, Google Calendar for setting up appointments, Stripe for making payments etc. 
+
+Multiple MCP Servers can be attached to a single MCP Client running on MCP Hosts such as Claude Desktop, Cursor IDE etc. This beats having to connect each service provider separately to your agent through their APIs and deal with the idiosyncrasies of each API provider.
 
 ![MCP Process Flow](images/mcp-process-flow.png)
 
 
-As a result, MCP completely transform how AI works in the real world! Think of it as the game-changing "USB-C moment" for artificial intelligence - a universal connector that finally lets AI models break free from their training data prison and interact with *everything* around them in real-time!
+As a result, MCP lets AI models break free from their training data prison and interact with *everything* around them in real-time!
 
 **Here's what makes this absolutely mind-blowing:** Instead of AI being limited to generating pretty text, MCP creates a standardized bridge that connects AI to travel APIs, databases, your local files, enterprise tools - you name it! It's like giving AI superpowers to actually *do* things, not just talk about them.
 
@@ -35,7 +39,7 @@ The current state of AI integration is a developer's nightmare. Building that in
 
 MCP solves these problems by introducing three game-changing innovations:
 
-**Context-Aware Tool Discovery**: Unlike traditional APIs that require hardcoded integrations, MCP enables AI agents to dynamically discover available services. Your travel assistant powered by a LLM can find flight search tools, hotel booking capabilities, and activity recommendations at runtime, adapting to new services **without code changes**.
+**Context-Aware Tool Discovery**: Unlike traditional APIs that require hardcoded integrations, MCP enables AI agents to dynamically discover available services. Your travel assistant powered by a LLM can find flight search tools, hotel booking capabilities, and activity recommendations at **runtime** (yes, at runtime), adapting to new services **without code changes**.
 
 **Built-in Safety and Governance**: With AI agents making autonomous decisions across multiple services, security isn't optional. MCP includes sophisticated permission models, audit logging, and risk-based execution controls that align with enterprise security requirements—crucial when your travel assistant is handling payment information across different platforms.
 
@@ -43,7 +47,7 @@ MCP solves these problems by introducing three game-changing innovations:
 
 ## Is MCP Replacing APIs?
 
-MCP isn't trying to replace APIs—it's creating a new layer of abstraction that makes APIs infinitely more powerful for AI applications.
+MCP isn't trying to replace APIs. Rather, it is creating a new layer of abstraction that makes APIs infinitely more powerful for AI applications.
 
 Traditional APIs excel at direct, high-performance system-to-system communication. The Skyscanner API is optimized for flight searches, Booking.com's API handles hotel reservations efficiently, and weather APIs deliver meteorological data quickly. They offer fine-grained control and benefit from decades of established patterns.
 
@@ -55,7 +59,7 @@ MCP addresses these challenges by providing:
 - **Semantic Descriptions**: Rich metadata helps LLMs understand that flight tools should be used before hotel tools, and that weather data influences activity recommendations
 - **Unified Error Handling**: Consistent patterns across all travel service integrations
 - **Built-in Orchestration**: Permission models and workflow management designed for multi-service coordination
-- **Graceful Degradation:**  Weather tool failed as I used the US Weather Service API which does not provide weather forecast for Alberta, but LLM continued task completion using alternative knowledge
+- **Graceful Degradation:**  When an agent fails, the orchestration does not break. For instance, when my Weather tool failed as I used the US Weather Service which does not provide weather forecast for Alberta, but LLM continued task completion using alternative knowledge by searching the web for weather conditions in Alberta.
 
 The relationship is beautifully complementary. MCP servers often wrap existing travel APIs, providing an AI-friendly interface while preserving the performance and specificity of services like Skyscanner's flight search algorithms or Booking.com's inventory management.
 
@@ -63,9 +67,9 @@ The relationship is beautifully complementary. MCP servers often wrap existing t
 
 MCP's elegance lies in its layered architecture, built on three foundational layers that work in perfect harmony:
 
-**The Transport Layer** abstracts away communication mechanisms. Whether you're using HTTP/HTTPS for web-based integrations, stdio for local processes, or custom transports for specialized environments, the upper layers remain unchanged.
+**The Transport Layer** abstracts away communication mechanisms. Whether you're using **HTTP/HTTPS** for web-based integrations, **stdio** for local processes, or custom transports for specialized environments, the upper layers remain unchanged.
 
-**The Protocol Layer** defines the message formats and communication patterns - for instance, JSON/RPC.
+**The Protocol Layer** defines the message formats and communication patterns - for instance, **JSON/RPC**.
 
 **The Capability Layer** is where the magic happens. This layer defines three powerful primitives that transform how AI agents interact with external systems.
 

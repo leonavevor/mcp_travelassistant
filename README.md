@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/skarlekar-mcp-travelassistant-badge.png)](https://mseep.ai/app/skarlekar-mcp-travelassistant)
+
 # 🌍 Travel Assistant MCP Server Ecosystem
 
 A comprehensive suite of Model Context Protocol (MCP) servers that work together to provide intelligent travel planning and assistance. This ecosystem enables Claude to orchestrate multiple specialized services to create detailed travel itineraries, find optimal flights and accommodations, discover local events, analyze weather conditions, and manage budget considerations across different currencies.

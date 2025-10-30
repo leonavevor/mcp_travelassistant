@@ -1,3 +1,24 @@
+##### ide specific #####
+.vscode/
+.idea/
+
+##### python specific #####
+.venv
+__pycache__/
+*.pyc
+poetry.lock
+requirements-lock.txt
+
+##### builds #####
+build/
+dist/
+*.egg-info/
+.eggs/
+
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -141,12 +162,12 @@ Thumbs.db
 .idea/
 
 # Local results and data directories
-servers/*/finance/
-servers/*/hotels/
-servers/*/events/
-servers/*/weather_data/
-servers/*/geocoded_locations/
-servers/*/flights/
+py_mcp_travelplanner/*/finance/
+py_mcp_travelplanner/*/hotels/
+py_mcp_travelplanner/*/events/
+py_mcp_travelplanner/*/weather_data/
+py_mcp_travelplanner/*/geocoded_locations/
+py_mcp_travelplanner/*/flights/
 
 # Lock files
 uv.lock
@@ -160,4 +181,7 @@ uv.lock
 
 # Do not ignore documentation or code files
 !README.md
-!*.py 
+!*.py
+
+
+

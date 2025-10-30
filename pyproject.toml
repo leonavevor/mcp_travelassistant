@@ -1,0 +1,93 @@
+[build-system]
+requires = ["setuptools>=61.0", "poetry_core>=1.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "py_mcp_travelplanner"
+version = "0.1.0"
+description = "Minimal Azure Policy engine with file and sdk backends"
+readme = { file = "README.md", content-type = "text/markdown" }
+license = {text = "MIT"}
+authors = [ {name = "(local)"} ]
+# NOTE: consolidated py_mcp_travelplanner require Python >=3.12.1; bumping root minimum to be compatible with all py_mcp_travelplanner.
+# Also add an upper bound (<4.0) so packages that don't yet support Python 4.x (for example openapi-pydantic)
+# remain satisfiable by dependency resolvers.
+requires-python = ">=3.11.1,<4.0"
+
+dependencies = [
+    "requests==2.32.3",
+]
+
+# Optional dependencies: dev plus server extras consolidated from py_mcp_travelplanner/*/pyproject.toml
+[project.optional-dependencies]
+dev = ["pytest==7.4.0"]
+
+# A combined 'py_mcp_travelplanner' extra that contains the union of all server dependencies.
+servers = [
+    "fastmcp>=2.5.1",
+    "mcp>=1.9.1",
+    "requests>=2.32.3",
+    "geopy>=2.4.1",
+    "nominatim>=0.1",
+    "ratelimiter>=1.2.0.post0",
+    "python-dotenv>=1.1.0",
+    "typing-extensions>=4.13.2",
+]
+
+# Per-server extras so consumers can install only what a specific server needs.
+"event-server" = [
+    "fastmcp>=2.5.1",
+    "mcp>=1.9.1",
+    "requests>=2.32.3",
+]
+
+"finance-server" = [
+    "fastmcp>=2.5.1",
+    "mcp>=1.9.1",
+    "requests>=2.32.3",
+]
+
+"flight-server" = [
+    "fastmcp>=2.5.1",
+    "mcp>=1.9.1",
+    "requests>=2.32.3",
+]
+
+"geocoder-server" = [
+    "fastmcp>=2.5.1",
+    "geopy>=2.4.1",
+    "mcp>=1.9.1",
+    "nominatim>=0.1",
+    "ratelimiter>=1.2.0.post0",
+    "requests>=2.32.3",
+]
+
+"hotel-server" = [
+    "fastmcp>=2.5.1",
+    "mcp>=1.9.1",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+]
+
+"weather-server" = [
+    "fastmcp>=2.5.1",
+    "mcp>=1.9.1",
+    "requests>=2.32.3",
+    "typing-extensions>=4.13.2",
+]
+
+[project.scripts]
+py_mcp_travelplanner_cli = "py_mcp_travelplanner.cli:main"
+
+# Tooling metadata / mapping for maintainers. This is not standard pyproject metadata but helps
+# document which server extras correspond to which server folders.
+[tool.server-consolidation]
+# py_mcp_travelplanner listed for reference
+servers = ["event-server", "finance-server", "flight-server", "geocoder-server", "hotel-server", "weather-server"]
+
+# Assumptions:
+# - We bumped the root requires-python to be compatible with py_mcp_travelplanner that declare >=3.12.1 and added an upper bound <4.0.
+# - We updated the root package's pinned 'requests' to 'requests==2.32.3' to harmonize with server extras.
+#   If you prefer a different constraint (e.g., >=2.32.3), update the dependencies accordingly.
+# - The original server pyproject.toml files have been replaced with a short note indicating
+#   their consolidation (keeps a record). If you'd rather delete them, we can remove them instead.

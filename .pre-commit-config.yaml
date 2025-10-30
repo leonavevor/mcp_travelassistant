@@ -1,0 +1,37 @@
+# Pre-commit configuration file for Python projects
+# Enable pre-commit hooks for code formatting, linting, and testing
+# setup python environment: python -m venv .venv && source .venv/bin/activate
+# python -m pip install pre-commit
+# pre-commit install
+# pre-commit run --all-files
+# To manually run tests: pre-commit run pytest --all-files
+# To skip hooks for a commit: git commit --no-verify
+# To disable a specific hook temporarily: pre-commit uninstall-hook <hook-id>
+# To disable all hooks temporarily: pre-commit uninstall
+
+repos:
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        args: ["--line-length=88", "--quiet"]
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        args: ["--profile=black"]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest (run tests)
+        entry: pytest -q
+        language: python
+        pass_filenames: false
+        additional_dependencies: [pytest==7.4.0]
+        files: ''

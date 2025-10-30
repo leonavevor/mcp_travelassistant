@@ -1,0 +1,58 @@
+name: Release and Publish
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    environment: CI
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip build twine setuptools wheel poetry
+
+      - name: Build distributions
+        run: |
+          python -m build --sdist --wheel -o dist # or poetry build -P ./py_mcp_travelplanner
+
+      # Publish to TestPyPI – a separate instance of the Python Package Index that allows you to try distribution tools and processes without affecting the real index.
+      - name: Upload to TestPyPI
+        if: ${{ vars.ENABLE_AUTOPUBLISH != 'false' }}
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          python -m pip install --upgrade twine
+          python -m twine upload --repository testpypi dist/* # --skip-existing --verbose
+
+      # Publish to PyPI - the main Pypi Package Index for public consumption
+      - name: Upload to PyPI
+        if: startsWith(github.ref, 'refs/tags/v') && github.event.ref && (github.event.inputs && github.event.inputs.publish_to_pypi) == 'true' || env.PUBLISH_TO_PYPI == 'true'
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          python -m pip install --upgrade twine
+          python -m twine upload dist/* # --skip-existing --verbose
+
+      - name: Create GitHub Release and attach artifacts
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          artifacts: dist/*

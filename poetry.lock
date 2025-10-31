@@ -1619,10 +1619,9 @@ dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "requests
 name = "python-dotenv"
 version = "1.2.1"
 description = "Read key-value pairs from a .env file and set them as environment variables"
-optional = true
+optional = false
 python-versions = ">=3.9"
 groups = ["main"]
-markers = "extra == \"servers\" or extra == \"event-server\" or extra == \"finance-server\" or extra == \"flight-server\" or extra == \"geocoder-server\" or extra == \"hotel-server\" or extra == \"weather-server\""
 files = [
     {file = "python_dotenv-1.2.1-py3-none-any.whl", hash = "sha256:b81ee9561e9ca4004139c6cbba3a238c32b03e4894671e181b671e8cb8425d61"},
     {file = "python_dotenv-1.2.1.tar.gz", hash = "sha256:42667e897e16ab0d66954af0e60a9caa94f0fd4ecf3aaf6d2d260eec1aa36ad6"},
@@ -2328,4 +2327,4 @@ weather-server = ["fastmcp", "mcp", "requests", "typing-extensions"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11.1,<4.0"
-content-hash = "0ed4d4c1dbfb7259a97bb57d8f2d94c2149e69f0c0fdbd2c9c656f76093c962e"
+content-hash = "3dea2db2aa12d4f2853867a234af8d7eda62a410b98de48dd91522b14159b46d"

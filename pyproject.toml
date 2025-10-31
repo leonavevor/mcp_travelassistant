@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "py_mcp_travelplanner"
-version = "0.1.9"
+version = "0.1.10"
 description = "Minimal Azure Policy engine with file and sdk backends"
 readme = { file = "README.md", content-type = "text/markdown" }
 license = {text = "MIT"}
@@ -12,7 +12,7 @@ authors = [ {name = "leonard Avevor"} ]
 # NOTE: consolidated py_mcp_travelplanner require Python >=3.12.1; bumping root minimum to be compatible with all py_mcp_travelplanner.
 # Also add an upper bound (<4.0) so packages that don't yet support Python 4.x (for example openapi-pydantic)
 # remain satisfiable by dependency resolvers.
-requires-python = ">=3.12.1,<4.0"
+requires-python = ">=3.11.1,<4.0"
 
 dependencies = [
     "requests==2.32.3",

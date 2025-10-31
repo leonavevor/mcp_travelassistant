@@ -306,7 +306,7 @@ class TestMCPServerInitialization:
 
     def test_logger_configured(self):
         """Verify logger is configured correctly."""
-        assert mcp_server.LOG.name == "py_mcp_travelplanner.unified_mcp_server"
+        assert mcp_server.LOG.name == "py_mcp_travelplanner.mcp_server"
 
 
 class TestMCPServerEdgeCases:

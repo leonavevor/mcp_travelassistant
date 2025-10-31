@@ -15,7 +15,7 @@ from mcp.types import Tool, TextContent
 
 from . import cli_handlers
 
-LOG = logging.getLogger("py_mcp_travelplanner.unified_mcp_server")
+LOG = logging.getLogger("py_mcp_travelplanner.mcp_server")
 
 # Create MCP server instance
 mcp = Server("py_mcp_travelplanner_unified")

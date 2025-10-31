@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "py_mcp_travelplanner": {
+      "command": "python",
+      "args": [
+        "-m",
+        "py_mcp_travelplanner.mcp_server"
+      ],
+      "env": {
+        "SERPAPI_KEY": "your_serpapi_key_here",
+        "LOG_LEVEL": "INFO",
+        "CONTROL_SERVER_HOST": "127.0.0.1",
+        "CONTROL_SERVER_PORT": "8787",
+        "MCP_SERVER_NAME": "py_mcp_travelplanner_unified",
+        "ENABLE_AUTO_DISCOVERY": "true",
+        "DEBUG_MODE": "false"
+      }
+    }
+  }
+}
+

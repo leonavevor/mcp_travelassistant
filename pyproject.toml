@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "py_mcp_travelplanner"
-version = "0.1.5"
+version = "0.1.6"
 description = "Minimal Azure Policy engine with file and sdk backends"
 readme = { file = "README.md", content-type = "text/markdown" }
 license = {text = "MIT"}
@@ -12,13 +12,15 @@ authors = [ {name = "leonard Avevor"} ]
 # NOTE: consolidated py_mcp_travelplanner require Python >=3.12.1; bumping root minimum to be compatible with all py_mcp_travelplanner.
 # Also add an upper bound (<4.0) so packages that don't yet support Python 4.x (for example openapi-pydantic)
 # remain satisfiable by dependency resolvers.
-requires-python = ">=3.11.1,<4.0"
+requires-python = ">=3.12.1,<4.0"
 
 dependencies = [
     "requests==2.32.3",
     "pytest (>=8.4.2,<9.0.0)",
     "tox==4.32.0",
     "pre-commit==3.4.0",
+    "pyyaml>=6.0.1",
+    "python-dotenv>=1.1.0",
 ]
 
 # Optional dependencies: dev plus server extras consolidated from py_mcp_travelplanner/*/pyproject.toml
@@ -32,7 +34,7 @@ ci_build = ["setuptools>=61.0", "poetry_core>=1.0.0", "wheel", "build>=0.10.0"]
 servers = [
     "fastmcp>=2.5.1",
     "mcp>=1.9.1",
-    "requests>=2.32.3",
+    "requests==2.32.3",
     "geopy>=2.4.1",
     "nominatim>=0.1",
     "ratelimiter>=1.2.0.post0",
@@ -45,19 +47,19 @@ servers = [
 "event-server" = [
     "fastmcp>=2.5.1",
     "mcp>=1.9.1",
-    "requests>=2.32.3",
+    "requests==2.32.3",
 ]
 
 "finance-server" = [
     "fastmcp>=2.5.1",
     "mcp>=1.9.1",
-    "requests>=2.32.3",
+    "requests==2.32.3",
 ]
 
 "flight-server" = [
     "fastmcp>=2.5.1",
     "mcp>=1.9.1",
-    "requests>=2.32.3",
+    "requests==2.32.3",
 ]
 
 "geocoder-server" = [
@@ -66,20 +68,20 @@ servers = [
     "mcp>=1.9.1",
     "nominatim>=0.1",
     "ratelimiter>=1.2.0.post0",
-    "requests>=2.32.3",
+    "requests==2.32.3",
 ]
 
 "hotel-server" = [
     "fastmcp>=2.5.1",
     "mcp>=1.9.1",
     "python-dotenv>=1.1.0",
-    "requests>=2.32.3",
+    "requests==2.32.3",
 ]
 
 "weather-server" = [
     "fastmcp>=2.5.1",
     "mcp>=1.9.1",
-    "requests>=2.32.3",
+    "requests==2.32.3",
     "typing-extensions>=4.13.2",
 ]
 
@@ -99,4 +101,3 @@ py_mcp_travelplanner_cli = "py_mcp_travelplanner.cli:main"
 [tool.server-consolidation]
 # py_mcp_travelplanner listed for reference
 servers = ["event-server", "finance-server", "flight-server", "geocoder-server", "hotel-server", "weather-server"]
-

@@ -21,14 +21,17 @@ import signal
 import subprocess
 import sys
 import time
-from typing import List
+from typing import List, Optional
 
+from .config import get_config
+
+# Try to import optional dotenv support
 try:
-    from dotenv import dotenv_values  # type: ignore
-except Exception as exc:  # pragma: no cover - helpful import error
+    from dotenv import dotenv_values
+    _DOTENV_AVAILABLE = True
+except ImportError:
     dotenv_values = None  # type: ignore
-    LOG = logging.getLogger("py_mcp_travelplanner.cli_handlers")
-    LOG.debug("python-dotenv not available: %s", exc)
+    _DOTENV_AVAILABLE = False
 
 LOG = logging.getLogger("py_mcp_travelplanner.cli_handlers")
 
@@ -156,7 +159,7 @@ def _load_env_file(path: pathlib.Path) -> dict:
     result: dict = {}
     if not path.exists():
         return result
-    if dotenv_values is not None:
+    if _DOTENV_AVAILABLE and dotenv_values is not None:
         try:
             values = dotenv_values(str(path))
             # dotenv_values returns a dict-like object; convert to dict
@@ -180,25 +183,12 @@ def _load_env_file(path: pathlib.Path) -> dict:
 
 
 def _resolve_serpapi_key() -> str | None:
-    """Resolve SERPAPI_KEY from env or .env files nearby.
+    """Resolve SERPAPI_KEY from config (which loads from env, .env, yaml).
 
-    Order: environment variable -> package/.env -> parent/.env
+    Returns the API key or None if not found.
     """
-    key = os.environ.get('SERPAPI_KEY')
-    if key:
-        return key
-
-    # package dir (this module's parent)
-    package_dir = pathlib.Path(__file__).resolve().parent
-    pkg_env = package_dir / '.env'
-    env_vars = _load_env_file(pkg_env)
-    if 'SERPAPI_KEY' in env_vars:
-        return env_vars['SERPAPI_KEY']
-
-    # repo root .env
-    repo_env = REPO_ROOT / '.env'
-    env_vars = _load_env_file(repo_env)
-    return env_vars.get('SERPAPI_KEY')
+    from .config import get_api_key
+    return get_api_key('SERPAPI_KEY')
 
 
 def verify_serpapi_key(timeout: float = 10.0) -> tuple[bool, dict]:

@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "py_mcp_travelplanner_uv_testpypi": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--index",
+        "https://test.pypi.org/simple",
+        "--with",
+        "py_mcp_travelplanner",
+        "--no-project",
+        "--",
+        "py_mcp_travelplanner_cli"
+      ],
+      "env": {
+        "SERPAPI_KEY": "your_serpapi_key_here",
+        "LOG_LEVEL": "INFO",
+        "CONTROL_SERVER_PORT": "8787"
+      }
+    }
+  }
+}
+

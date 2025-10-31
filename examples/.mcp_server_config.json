@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "travel-planner": {
+      "command": "python",
+      "args": [
+        "-m",
+        "py_mcp_travelplanner.mcp_server"
+      ],
+      "cwd": "/PROJECT_PATH/mcp_travelplanner",
+      "env": {
+        "PYTHONPATH": "/PROJECT_PATH/mcp_travelplanner",
+        "SERPAPI_KEY": "${SERPAPI_KEY}"
+      }
+    }
+  }
+}
+

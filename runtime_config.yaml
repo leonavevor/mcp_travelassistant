@@ -1,0 +1,175 @@
+# Runtime Configuration for MCP Travel Planner
+# This file provides default configuration values that can be overridden by
+# environment variables or a .env file.
+#
+# Configuration Priority (highest to lowest):
+# 1. Environment variables
+# 2. .env file
+# 3. This file (runtime_config.yaml)
+# 4. Built-in defaults
+
+# =============================================================================
+# Server Configuration
+# =============================================================================
+
+# Control Server Settings
+# The control server provides HTTP endpoints for managing MCP servers
+CONTROL_SERVER_HOST: "127.0.0.1"
+CONTROL_SERVER_PORT: 8787
+
+# MCP Server Name
+# Used to identify this MCP server instance
+MCP_SERVER_NAME: "py_mcp_travelplanner_unified"
+
+# =============================================================================
+# Logging Configuration
+# =============================================================================
+
+# Log Level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+LOG_LEVEL: "INFO"
+
+# Log Format
+LOG_FORMAT: "%(levelname)s:%(name)s: %(message)s"
+
+# =============================================================================
+# Server Process Management
+# =============================================================================
+
+# Timeout in seconds when starting a server
+SERVER_START_TIMEOUT: 30.0
+
+# Timeout in seconds when stopping a server
+SERVER_STOP_TIMEOUT: 5.0
+
+# Interval in seconds between health checks
+HEALTH_CHECK_INTERVAL: 10.0
+
+# =============================================================================
+# API Keys and External Services
+# =============================================================================
+
+# IMPORTANT: For security, DO NOT store actual API keys in this file.
+# Instead, use environment variables or a .env file that is NOT committed to git.
+
+# SerpAPI Key (required for flight_server)
+# Get your key from: https://serpapi.com/
+SERPAPI_KEY: null
+
+# WeatherStack API Key (required for weather_server)
+# Get your key from: https://weatherstack.com/
+WEATHERSTACK_API_KEY: null
+
+# Nominatim User Agent (required for geocoder_server)
+# Should be a unique identifier for your application
+NOMINATIM_USER_AGENT: "mcp_travelplanner/0.1.0"
+
+# =============================================================================
+# Server Discovery and Management
+# =============================================================================
+
+# Directory to search for server modules
+# If null, auto-detects based on package location
+SERVERS_DIR: null
+
+# Enable automatic discovery of server modules
+ENABLE_AUTO_DISCOVERY: true
+
+# =============================================================================
+# Development and Debugging
+# =============================================================================
+
+# Dry run mode - show what would happen without taking action
+DRY_RUN: false
+
+# Verbose output
+VERBOSE: false
+
+# Enable debug mode (more detailed logging and error messages)
+DEBUG_MODE: false
+
+# =============================================================================
+# PID File Management
+# =============================================================================
+
+# Directory for storing PID files
+PID_FILE_DIR: ".mcp_pids"
+
+# Enable PID file tracking for server processes
+ENABLE_PID_TRACKING: true
+
+# =============================================================================
+# Service-Specific Configuration
+# =============================================================================
+
+# Flight Server Configuration
+FLIGHT_SERVER:
+  # Number of search results to return
+  MAX_RESULTS: 10
+  # Cache duration in seconds
+  CACHE_TTL: 3600
+
+# Hotel Server Configuration
+HOTEL_SERVER:
+  # Number of search results to return
+  MAX_RESULTS: 20
+  # Default search radius in km
+  DEFAULT_RADIUS: 10
+
+# Weather Server Configuration
+WEATHER_SERVER:
+  # Temperature units: metric, imperial, or kelvin
+  UNITS: "metric"
+  # Number of days for forecast
+  FORECAST_DAYS: 7
+
+# Geocoder Server Configuration
+GEOCODER_SERVER:
+  # Request timeout in seconds
+  TIMEOUT: 10
+  # Rate limit (requests per second)
+  RATE_LIMIT: 1
+
+# Event Server Configuration
+EVENT_SERVER:
+  # Number of events to return
+  MAX_RESULTS: 50
+  # Search radius in km
+  DEFAULT_RADIUS: 25
+
+# Finance Server Configuration
+FINANCE_SERVER:
+  # Currency conversion cache TTL in seconds
+  CACHE_TTL: 3600
+  # Default base currency
+  DEFAULT_CURRENCY: "USD"
+
+# =============================================================================
+# Performance and Resource Management
+# =============================================================================
+
+# Maximum number of concurrent server processes
+MAX_CONCURRENT_SERVERS: 10
+
+# Memory limit per server process (MB)
+# Set to 0 to disable
+MAX_MEMORY_PER_SERVER: 512
+
+# CPU limit per server process (percentage)
+# Set to 0 to disable
+MAX_CPU_PER_SERVER: 50
+
+# =============================================================================
+# Advanced Configuration
+# =============================================================================
+
+# Enable experimental features
+ENABLE_EXPERIMENTAL_FEATURES: false
+
+# Metrics collection
+ENABLE_METRICS: false
+METRICS_PORT: 9090
+
+# Health check endpoint
+ENABLE_HEALTH_ENDPOINT: true
+HEALTH_ENDPOINT_PORT: 8788
+

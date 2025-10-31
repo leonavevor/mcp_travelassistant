@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "travel-planner": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "py_mcp_travelplanner",
+        "py_mcp_travelplanner_cli",
+        "mcp"
+      ],
+      "env": {
+        "SERPAPI_KEY": "${SERPAPI_KEY}"
+      }
+    }
+  }
+}
+

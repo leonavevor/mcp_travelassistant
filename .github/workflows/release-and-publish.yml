@@ -5,6 +5,14 @@ on:
     tags:
       - 'v*.*.*'
 
+inputs:
+  publish_to_pypi_nightly:
+      type: boolean
+      default: false
+  publish_to_pypi_main:
+    type: boolean
+    default: false
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -32,7 +40,7 @@ jobs:
 
       # Publish to TestPyPI – a separate instance of the Python Package Index that allows you to try distribution tools and processes without affecting the real index.
       - name: Upload to TestPyPI
-        if: ${{ vars.ENABLE_AUTOPUBLISH != 'false' }}
+        if: vars.ENABLE_AUTOPUBLISH_PYPI_NIGHTLY == 'true' || (github.event.inputs && github.event.inputs.publish_to_pypi_nightly) == 'true'
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.TEST_PYPI_API_TOKEN }}
@@ -42,7 +50,7 @@ jobs:
 
       # Publish to PyPI - the main Pypi Package Index for public consumption
       - name: Upload to PyPI
-        if: startsWith(github.ref, 'refs/tags/v') && github.event.ref && (github.event.inputs && github.event.inputs.publish_to_pypi) == 'true' || env.PUBLISH_TO_PYPI == 'true'
+        if: vars.ENABLE_AUTOPUBLISH_PYPI_MAIN == 'true' || (github.event.inputs && github.event.inputs.publish_to_pypi_main) == 'true'
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}

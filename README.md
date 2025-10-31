@@ -11,18 +11,28 @@ This project implements ONE unified MCP server that orchestrates multiple travel
 - **MCP Tools**: Expose travel planning capabilities via Model Context Protocol
 - **Claude Desktop Integration**: Ready-to-use configuration for Claude Desktop
 - **Modular Backend**: Each service runs independently but is coordinated by the unified server
+- **Runtime Configuration**: Multi-source config with env vars, .env, and YAML support
 
-## What You Need to Know
+## Quick Start
 
-**This is a unified MCP server - you connect to ONE server that provides ALL travel services.**
+**Ready-to-use MCP configuration examples** are provided in the `examples/` directory:
 
-- **MCP Client Config**: Use `.mcp_server_config.json` or `claude_desktop_config_template.json`
-- **Quick Setup**: See [QUICKSTART_MCP.md](QUICKSTART) for Claude Desktop integration
-- **Implementation Details**: See [MCP_IMPLEMENTATION_SUMMARY.md](MCP_IMPLEMENTATION_SUMMARY.md)
+- **`claude_desktop_config_uv_testpypi.json`** - Run from Test PyPI with UV (no installation)
+- **`claude_desktop_config_uv_pypi.json`** - Run from PyPI with UV (stable release)
+- **`claude_desktop_config_template.json`** - Standard Python installation
 
-**Two Configuration Files (Different Purposes)**:
-1. **`.mcp_server_config.json`** → For MCP clients (Claude Desktop) to connect to the server
-2. **`mcp_config.json`** → For the server to manage backend services internally
+See [`examples/QUICK_REFERENCE.md`](examples/QUICK_REFERENCE.md) for copy-paste configs and [`examples/MCP_CONFIG_README.md`](examples/MCP_CONFIG_README.md) for complete documentation.
+
+## Configuration
+
+The project uses a **multi-source runtime configuration system** with proper precedence:
+
+1. **Environment variables** (highest priority)
+2. **.env file**
+3. **runtime_config.yaml**
+4. **Default values** (lowest priority)
+
+See [`docs.not-needed/CONFIG_README.md`](docs.not-needed/CONFIG_README.md) for complete configuration documentation.
 
 ## Architecture
 
@@ -34,27 +44,32 @@ Unified MCP Server (single entry point)
 Backend Services (flight, hotel, weather, geocoder, finance, events)
 ```
 
-Status
+## Status
+
 - Prototype / Proof-of-Concept. Intended for local development, experimentation, and as a reference implementation for orchestration patterns.
 
-Key concepts
+## Key Concepts
+
 - Modular microservice-style servers implemented as small Python scripts under `py_mcp_travelplanner/`.
 - Each service lives in its own folder (for example `flight_server/`, `hotel_server/`, `weather_server/`) with a `main.py` or server entrypoint.
 - A small CLI and control server are provided for orchestration and to demonstrate inter-service interactions.
 
-Contents (not exhaustive)
+## Contents
+
 - `py_mcp_travelplanner/` — main package containing CLI, control server and per-service folders.
   - `flight_server/`, `hotel_server/`, `weather_server/`, `geocoder_server/`, `event_server/`, `finance_server/` — example service implementations.
-- `requirements.txt` — pinned runtime/dev dependencies used by the project (single (root) source of truth is recommended).
+- `requirements.txt` — pinned runtime/dev dependencies used by the project.
 - `tests/` — pytest-based unit tests and lifecycle tests.
+- `examples/` — MCP configuration examples for Claude Desktop and other clients.
 
-Quick start (local development)
+## Quick Start (Local Development)
 
-Prerequisites
+### Prerequisites
+
 - Linux / macOS / Windows with WSL
-- Python 3.12.1 or later is recommended for development here, but the project should be constrained to exclude Python 4.0 to remain compatible with dependencies that only declare <4.0 support (see Development Notes).
+- Python 3.12.1 or later is recommended for development
 
-Recommended: create and use a virtual environment
+### Recommended: Create and use a virtual environment
 
 ```bash
 python -m venv .venv
@@ -62,21 +77,21 @@ source .venv/bin/activate
 python -m pip install --upgrade pip
 ```
 
-Install dependencies
+### Install dependencies
 
-Option A — pip (quick)
+**Option A — pip (quick)**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Option B — poetry (if you prefer pyproject/poetry workflows)
+**Option B — poetry (if you prefer pyproject/poetry workflows)**
 
 ```bash
 poetry install
 ```
 
-Running services
+### Running services
 
 Each server folder contains a runnable entrypoint (usually `main.py`). From the repository root you can start any server directly with Python. For example:
 
@@ -91,9 +106,9 @@ python py_mcp_travelplanner/weather_server/main.py
 python py_mcp_travelplanner/control_server.py
 ```
 
-Note: some servers may expect environment variables or API keys; check the server's README under the corresponding server folder (for example `flight_server/flights_server_readme.md`) for provider-specific setup.
+**Note:** Some servers may expect environment variables or API keys; check the server's README under the corresponding server folder for provider-specific setup.
 
-CLI
+### CLI
 
 A simple CLI is available under `py_mcp_travelplanner/cli.py` and `py_mcp_travelplanner/cli_handlers.py`. You can run the CLI script to access helper commands used in development:
 
@@ -103,49 +118,131 @@ python -m py_mcp_travelplanner.cli
 
 (If the package isn't installed as a module, run the file directly: `python py_mcp_travelplanner/cli.py`.)
 
-Unified MCP Server — Single Entry Point Architecture
+## Unified MCP Server — Single Entry Point Architecture
 
 This project provides **ONE unified MCP server** that acts as a single entry point to all travel planner services. The server is located at `py_mcp_travelplanner/mcp_server.py` and orchestrates all backend services (flights, hotels, weather, geocoding, events, finance) through a single Model Context Protocol interface.
 
-Architecture Overview
+### Architecture Overview
+
 - **Single MCP Server**: One unified server exposing all travel planning capabilities
 - **Service Orchestration**: The MCP server manages and coordinates multiple backend services
 - **Unified Interface**: MCP clients connect to one server and access all travel services through it
 
-MCP Server Configuration
+## MCP Server Configuration
 
-The repository includes a ready-to-use MCP server configuration file at `.mcp_server_config.json`:
+### For Claude Desktop and MCP Clients
 
+Ready-to-use configuration files are provided in the `examples/` directory:
+
+**Option 1: UV with Test PyPI** (recommended for testing)
 ```json
 {
   "mcpServers": {
-    "travel-planner": {
-      "command": "python",
-      "args": ["-m", "py_mcp_travelplanner.mcp_server"],
-      "cwd": "/path/to/mcp_travelplanner",
+    "py_mcp_travelplanner_testpypi": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--index",
+        "https://test.pypi.org/simple",
+        "--with",
+        "py_mcp_travelplanner",
+        "--no-project",
+        "--",
+        "py_mcp_travelplanner_cli"
+      ],
       "env": {
-        "PYTHONPATH": "/path/to/mcp_travelplanner"
+        "SERPAPI_KEY": "your_serpapi_key_here"
       }
     }
   }
 }
 ```
 
-Update the `cwd` and `PYTHONPATH` values to match your installation directory.
+**Option 2: UV with PyPI** (stable release)
+```json
+{
+  "mcpServers": {
+    "py_mcp_travelplanner": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with",
+        "py_mcp_travelplanner",
+        "--no-project",
+        "--",
+        "py_mcp_travelplanner_cli"
+      ],
+      "env": {
+        "SERPAPI_KEY": "your_serpapi_key_here"
+      }
+    }
+  }
+}
+```
 
-What the unified MCP server exposes
+**Option 3: Local Installation**
+```json
+{
+  "mcpServers": {
+    "py_mcp_travelplanner": {
+      "command": "python",
+      "args": ["-m", "py_mcp_travelplanner.mcp_server"],
+      "env": {
+        "SERPAPI_KEY": "your_serpapi_key_here"
+      }
+    }
+  }
+}
+```
+
+**Configuration locations by OS:**
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+See [`examples/MCP_CONFIG_README.md`](examples/MCP_CONFIG_README.md) for complete setup instructions.
+
+### Environment Variables
+
+Set these in the MCP config `env` section or in your shell:
+
+**Required:**
+- `SERPAPI_KEY` - Your SerpAPI key (get from https://serpapi.com/)
+
+**Optional (with defaults):**
+- `LOG_LEVEL` - `DEBUG`, `INFO`, `WARNING`, `ERROR` (default: `INFO`)
+- `CONTROL_SERVER_PORT` - Server port (default: `8787`)
+- `DEBUG_MODE` - Enable debug mode: `true`/`false` (default: `false`)
+- `DRY_RUN` - Test mode without side effects: `true`/`false` (default: `false`)
+
+See [`docs.not-needed/CONFIG_README.md`](docs.not-needed/CONFIG_README.md) for all configuration options.
+
+### What the unified MCP server exposes
+
 - **Tools**: `list_servers`, `start_server`, `start_all_servers`, `stop_server`, `health_check`, `get_status`, `list_pids`, `verify_serpapi_key`
 - **Services**: event_server, finance_server, flight_server, geocoder_server, hotel_server, weather_server
 - Each tool accepts a JSON-like arguments object and returns TextContent responses
 
-Environment variables
-- **SERPAPI_KEY**: Required for flight_server operations. Set in your environment before starting the MCP server.
+## Running the MCP Server
 
-Running the MCP server (stdio)
+### Method 1: With Claude Desktop (Recommended)
 
-The unified MCP server runs via stdio transport and can be used with any MCP-compatible client.
+1. **Get a SERPAPI key** from https://serpapi.com/ (free tier: 100 searches/month)
 
-Method 1: Direct execution
+2. **Choose a configuration** from `examples/`:
+   - For testing: `claude_desktop_config_uv_testpypi.json`
+   - For production: `claude_desktop_config_uv_pypi.json`
+   - For local dev: `claude_desktop_config_template.json`
+
+3. **Copy to Claude Desktop config location** (see paths above)
+
+4. **Edit the config** and replace `your_serpapi_key_here` with your actual key
+
+5. **Restart Claude Desktop**
+
+The travel planner tools will now be available in your Claude conversations!
+
+### Method 2: Direct Execution (for testing)
 
 ```bash
 # Start the unified MCP server
@@ -155,35 +252,7 @@ python -m py_mcp_travelplanner.mcp_server
 python -m py_mcp_travelplanner.cli mcp
 ```
 
-Method 2: Configure in Claude Desktop (or other MCP client)
-
-1. Locate your Claude Desktop config file:
-   - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
-
-2. Add the travel-planner MCP server:
-
-```json
-{
-  "mcpServers": {
-    "travel-planner": {
-      "command": "python",
-      "args": ["-m", "py_mcp_travelplanner.mcp_server"],
-      "cwd": "/absolute/path/to/mcp_travelplanner",
-      "env": {
-        "PYTHONPATH": "/absolute/path/to/mcp_travelplanner",
-        "SERPAPI_KEY": "your_key_here_if_needed"
-      }
-    }
-  }
-}
-```
-
-3. Restart Claude Desktop
-
-4. The travel-planner tools will be available in your Claude conversations
-
-Available MCP Tools
+## Available MCP Tools
 
 When connected to the unified MCP server, you'll have access to these tools:
 
@@ -196,60 +265,54 @@ When connected to the unified MCP server, you'll have access to these tools:
 - **list_pids**: List all running service process IDs
 - **verify_serpapi_key**: Test if SERPAPI_KEY is configured correctly
 
-Tool call JSON examples (conceptual)
+### Tool call JSON examples (conceptual)
 
-When calling a tool via an MCP client you will call the tool by name and pass the corresponding arguments object. The exact outer envelope depends on the MCP client library you use; below are the argument payloads for the most common operations (these are the values the MCP server expects in the `arguments` parameter of a tool call):
+When calling a tool via an MCP client you will call the tool by name and pass the corresponding arguments object. The exact outer envelope depends on the MCP client library you use; below are the argument payloads for the most common operations:
 
 - Start a server (dry run):
-
 ```json
 { "server": "flight_server", "dry_run": true }
 ```
 
 - Start a server (actual start):
-
 ```json
 { "server": "flight_server", "dry_run": false }
 ```
 
 - Start all servers (dry run):
-
 ```json
 { "dry_run": true }
 ```
 
 - Stop a server (by name):
-
 ```json
 { "server": "flight_server", "timeout": 5.0 }
 ```
 
 - Stop a server (by PID):
-
 ```json
 { "server": 12345, "timeout": 5.0 }
 ```
 
 - Health check:
-
 ```json
 { "server": "flight_server" }
 ```
 
 - Get overall status (no arguments):
-
 ```json
 {}
 ```
 
-Expected responses
-- The server returns an array of TextContent objects (the `mcp` library encodes this). When using an MCP client, you should inspect the returned text field(s). For example a `get_status` call may return a single element whose `text` contains a human-readable status summary.
+### Expected responses
 
-HTTP control server (concrete, scriptable)
+The server returns an array of TextContent objects (the `mcp` library encodes this). When using an MCP client, you should inspect the returned text field(s). For example a `get_status` call may return a single element whose `text` contains a human-readable status summary.
+
+## HTTP Control Server (Concrete, Scriptable)
 
 For convenience there is a small HTTP control server (`py_mcp_travelplanner/control_server.py`) that wraps a subset of the MCP server functionality and exposes simple HTTP endpoints. This is recommended for quick scripting and interactive use.
 
-Start the control server (background):
+### Start the control server (background)
 
 ```bash
 python py_mcp_travelplanner/control_server.py
@@ -257,67 +320,44 @@ python py_mcp_travelplanner/control_server.py
 python -m py_mcp_travelplanner.cli serve --host 127.0.0.1 --port 8787
 ```
 
-Useful curl examples
+### Useful curl examples
 
 - Get status (discovered servers + SERPAPI presence):
-
 ```bash
 curl -s http://127.0.0.1:8787/status | jq
 ```
 
 - Health check for a server:
-
 ```bash
 curl -s "http://127.0.0.1:8787/health?server=flight_server" | jq
 ```
 
 - Start a single server (dry run):
-
 ```bash
 curl -X POST "http://127.0.0.1:8787/start?server=flight_server&dry=true" | jq
 ```
 
 - Start all servers (actual start):
-
 ```bash
 curl -X POST "http://127.0.0.1:8787/start_all?dry=false" | jq
 ```
 
 - Stop a server by name:
-
 ```bash
 curl -X POST "http://127.0.0.1:8787/stop?server=flight_server" | jq
 ```
 
 - List registered PIDs:
-
 ```bash
 curl -s http://127.0.0.1:8787/pids | jq
 ```
 
 - Verify SERPAPI_KEY (performs a test request using the configured key):
-
 ```bash
 curl -X POST http://127.0.0.1:8787/test_key | jq
 ```
 
-Example JSON config file (optional)
-
-If you prefer to keep a small JSON file describing which servers to start and any environment overrides, here's a suggested format you can use in your own scripts. The project currently does not read this file automatically — it's a spec you can adopt for automation scripts that call the HTTP control server or an MCP client.
-
-mcp_config.json
-
-```json
-{
-  "servers": [
-    {"name": "flight_server", "env": {"SERPAPI_KEY": "${SERPAPI_KEY}"}},
-    {"name": "weather_server"}
-  ],
-  "start_all": {"dry_run": false}
-}
-```
-
-A small Python example showing how to use the HTTP control server
+### Python example
 
 ```python
 import requests
@@ -337,139 +377,7 @@ print(requests.post(f"{BASE}/start_all?dry=false").json())
 print(requests.post(f"{BASE}/test_key").json())
 ```
 
-Runtime Configuration (mcp_config.json)
-
-The file `mcp_config.json` at the repository root is used for **internal runtime orchestration** of backend services. This is separate from the MCP server configuration above.
-
-Purpose: Define which backend services to start and their runtime settings
-Location: `/mcp_config.json` (repository root)
-
-This repository uses a single, authoritative runtime configuration file:
-
-```json
-{
-  "name": "travel-planner",
-  "servers": [
-    { "name": "event_server" },
-    { "name": "finance_server" },
-    { "name": "flight_server" },
-    { "name": "geocoder_server" },
-    { "name": "hotel_server" },
-    { "name": "weather_server" }
-  ],
-  "start_all": { "dry_run": true }
-}
-```
-
-This config is used by:
-- The HTTP control server for orchestration
-- The `run_mcp_from_config.py` runner script for batch operations
-
-Note: This is NOT the MCP server config. The MCP server config (`.mcp_server_config.json`) is for MCP clients to connect to the unified server.
-
-Why a single config?
-- Centralized orchestration: keep server names and env overrides in one place.
-- Reproducible local dev and CI: commit one config and share it across your
-  team or CI jobs.
-- Simple automation: the included runner script (`scripts/run_mcp_from_config.py`)
-  consumes this single file and applies it via the HTTP control server or the
-  local handler fallback.
-
-Schema (recommended)
-- Root object with keys:
-  - `servers`: array of objects describing servers to manage
-    - each server object fields:
-      - `name` (string, required): server folder / identifier (e.g. "flight_server")
-      - `env` (object, optional): mapping of environment variables to values
-      - `dry_run` (boolean, optional): override to start this server in dry-run mode
-  - `start_all` (object, optional): behavior for starting all servers
-    - `dry_run` (boolean, optional): default dry-run flag used by runner when starting all
-
-Recommended strict example (`mcp_config.json`)
-
-```json
-{
-  "servers": [
-    {
-      "name": "flight_server",
-      "env": {
-        "SERPAPI_KEY": "${SERPAPI_KEY}"
-      }
-    },
-    {
-      "name": "weather_server"
-    }
-  ],
-  "start_all": {
-    "dry_run": false
-  }
-}
-```
-
-How the runner uses the unified config
-- Script: `scripts/run_mcp_from_config.py` (included in this repo)
-- Behavior:
-  1. The runner attempts to contact the local HTTP control server at
-     `127.0.0.1:8787` (the endpoint started by
-     `python -m py_mcp_travelplanner.cli serve` or by running
-     `py_mcp_travelplanner/control_server.py`). If reachable the runner will
-     POST to the control server endpoints to start/stop/check servers.
-  2. If the HTTP control server is not reachable or `requests` is not
-     available, the runner falls back to directly importing
-     `py_mcp_travelplanner.cli_handlers` and invoking the local helper
-     functions (`start_server`, `start_all_servers`, etc.).
-  3. The runner respects `dry_run` values: per-server `dry_run` overrides a
-     global `start_all.dry_run` value. Command-line flags `--dry-run` and
-     `--no-dry-run` can force an override when running the script.
-
-Runner usage (concrete commands)
-
-1) Start the HTTP control server (recommended):
-
-```bash
-# foreground (use Ctrl-C to stop)
-python py_mcp_travelplanner/control_server.py
-
-# or start via the CLI helper (same server)
-python -m py_mcp_travelplanner.cli serve --host 127.0.0.1 --port 8787
-```
-
-2) Run the unified config with the runner:
-
-```bash
-# Dry-run: show what would be started (honors config's dry_run values)
-python scripts/run_mcp_from_config.py --config mcp_config.json --dry-run
-
-# Start the configured servers (force actual start)
-python scripts/run_mcp_from_config.py --config mcp_config.json --no-dry-run
-
-# Use a different control host/port if needed
-python scripts/run_mcp_from_config.py --config mcp_config.json --http-host 0.0.0.0 --http-port 8787
-```
-
-Runner behavior notes and best practices
-- Environment overrides: the runner will forward the `env` mapping to the local
-  handler functions when using the fallback path. If you need the runner to
-  actually spawn subprocesses with those environment variables applied, ask me
-  and I will extend the runner to spawn subprocesses and inject `env` into the
-  child's environment.
-- Keep `mcp_config.json` under version control for reproducible development
-  and CI. You can maintain environment-variable placeholders (for example
-  `${SERPAPI_KEY}`) and populate them at runtime using your preferred secrets
-  mechanism or by exporting variables into your shell before running the
-  control server/runner.
-- Use a separate `mcp_config.local.json` or similar for machine-local overrides
-  and do not commit secrets.
-
-Consolidation reminder
-
-- After migrating server-level metadata to the root `pyproject.toml` and
-  consolidating runtime configuration into `mcp_config.json`, remove or
-  archive any per-service `pyproject.toml` files. The repository should have a
-  single root `pyproject.toml` and one `mcp_config.json` to configure runtime
-  orchestration for all services.
-
-Tests
+## Tests
 
 Run the test suite with pytest:
 
@@ -486,18 +394,22 @@ pytest --cov=py_mcp_travelplanner --cov-report=html
 
 **Test Coverage**:
 - **MCP Server Tests**: 25 tests covering all 8 tools, initialization, and workflows
-- See [MCP Server Test Documentation](docs/MCP_SERVER_TESTS.md) for detailed test information
+- **Config Tests**: 28 tests covering runtime configuration system
+- **Total**: 58 tests passing
 
-Development notes (important)
+## Development Notes (Important)
 
-1) Consolidate pyproject files
-- The repository currently contains service-level metadata and possibly extra `pyproject.toml` files inside server folders. For a single-source-of-truth dependency management approach, consolidate those service-level `pyproject.toml` contents into the root `pyproject.toml` and remove or archive the per-server `pyproject.toml` files. This simplifies CI, local dependency installation, and version pinning.
+### 1) Consolidate pyproject files
 
-2) Harmonize shared dependencies (requests example)
-- Several service folders may declare their own `requests` version. To avoid mismatched runtime behavior, pin `requests` at the root `pyproject.toml` (or `requirements.txt`) to a single compatible version range and update any server-specific files to rely on the root manifest.
+The repository currently contains service-level metadata and possibly extra `pyproject.toml` files inside server folders. For a single-source-of-truth dependency management approach, consolidate those service-level `pyproject.toml` contents into the root `pyproject.toml` and remove or archive the per-server `pyproject.toml` files. This simplifies CI, local dependency installation, and version pinning.
 
-3) Python compatibility and dependency constraints
-- Some dependencies in the ecosystem (for example `openapi-pydantic`) declare compatibility for Python versions `<4.0,>=3.8`. To remain compatible with such packages while still using modern Python, set the project Python requirement to a range that excludes Python 4.0. For example in `pyproject.toml` set:
+### 2) Harmonize shared dependencies (requests example)
+
+Several service folders may declare their own `requests` version. To avoid mismatched runtime behavior, pin `requests` at the root `pyproject.toml` (or `requirements.txt`) to a single compatible version range and update any server-specific files to rely on the root manifest.
+
+### 3) Python compatibility and dependency constraints
+
+Some dependencies in the ecosystem (for example `openapi-pydantic`) declare compatibility for Python versions `<4.0,>=3.8`. To remain compatible with such packages while still using modern Python, set the project Python requirement to a range that excludes Python 4.0. For example in `pyproject.toml` set:
 
 ```toml
 python = ">=3.12.1,<4.0"
@@ -505,32 +417,30 @@ python = ">=3.12.1,<4.0"
 
 This avoids dependency resolution errors if someone installs or runs the project on Python 4.x while the dependencies do not declare support for it.
 
-4) Harmonize dependency versions across the monorepo
-- When merging per-server manifests, ensure shared libraries (requests, aiohttp, pydantic, etc.) are pinned consistently. Run a dependency resolver (pip-tools, poetry) and test local execution after changes.
+### 4) Harmonize dependency versions across the monorepo
 
-Troubleshooting
+When merging per-server manifests, ensure shared libraries (requests, aiohttp, pydantic, etc.) are pinned consistently. Run a dependency resolver (pip-tools, poetry) and test local execution after changes.
+
+## Troubleshooting
 
 - If a server fails to start due to missing environment variables or API keys, check the server folder README for provider-specific instructions.
 - If you hit dependency resolution errors, run `pip check` or `poetry lock` to see conflicts and adjust the root manifest accordingly.
 
-Contributing
+## Contributing
 
 - Fork the repository, create a feature branch, and open a pull request against the main branch.
 - Keep changes focused: if you're changing dependencies, update `pyproject.toml`/`requirements.txt` and add a short rationale in the PR summary.
 - Run tests locally and ensure linting passes before opening a PR.
 
-License
+## License
 
-- See the `LICENSE` file in the repository root.
+See the `LICENSE` file in the repository root.
 
-Acknowledgements
+## Acknowledgements
 
-- This repository is a learning / POC project showcasing modular service layouts, simple orchestration, and packaging considerations for small multi-service Python projects.
+This repository is a learning / POC project showcasing modular service layouts, simple orchestration, and packaging considerations for small multi-service Python projects.
 
-Contact
+## Contact
 
-- For questions or help, open an issue in this repository with details about your environment and the problem you're encountering.
+For questions or help, open an issue in this repository with details about your environment and the problem you're encountering.
 
---
-
-(Developer notes: if you want, I can also help consolidate per-server `pyproject.toml` files into the root `pyproject.toml`, harmonize `requests` versions across the repo, and adjust the `python` range to `">=3.12.1,<4.0"` to avoid the `openapi-pydantic` compatibility issue.)

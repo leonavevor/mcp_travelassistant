@@ -62,7 +62,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     # mcp - start unified MCP server
     sp_mcp = subparsers.add_parser("mcp", help="Run unified MCP server via stdio")
-    sp_mcp.set_defaults(func=lambda args: __import__('py_mcp_travelplanner.mcp_server').unified_mcp_server.run_mcp_server())
+    sp_mcp.set_defaults(func=lambda args: __import__('py_mcp_travelplanner.mcp_server').mcp_server.run_mcp_server())
 
     # Add verbosity
     parser.add_argument("-v", "--verbose", action="count", default=0, help="Increase logging verbosity")

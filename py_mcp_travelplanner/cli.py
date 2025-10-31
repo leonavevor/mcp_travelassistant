@@ -23,6 +23,34 @@ from .cli_handlers import list_servers, start_server, health_check, start_all_se
 LOG = logging.getLogger("py_mcp_travelplanner.cli")
 
 
+def _run_mcp_server():
+    """Run the MCP server with proper error handling for missing dependencies."""
+    try:
+        from . import mcp_server
+        return mcp_server.run_mcp_server()
+    except ImportError as e:
+        if 'mcp' in str(e):
+            LOG.error("MCP dependencies not installed. Please install with: pip install 'py_mcp_travelplanner[servers]' or uv pip install mcp fastmcp")
+            print("\n❌ Error: MCP dependencies not installed")
+            print("\nTo fix this, run one of:")
+            print("  pip install 'py_mcp_travelplanner[servers]'")
+            print("  pip install mcp fastmcp")
+            print("  uv pip install mcp fastmcp")
+            return 1
+        raise
+
+
+def _run_control_server(host: str, port: int):
+    """Run the control server with proper error handling."""
+    try:
+        from . import control_server
+        return control_server.serve_control(host=host, port=port, background=False)
+    except ImportError as e:
+        LOG.error("Failed to import control_server: %s", e)
+        print(f"\n❌ Error: Failed to start control server: {e}")
+        return 1
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="py_mcp_travelplanner",
@@ -58,11 +86,11 @@ def build_parser() -> argparse.ArgumentParser:
     sp_serve = subparsers.add_parser("serve", help="Run HTTP control server for MCP CLI")
     sp_serve.add_argument("--host", default="127.0.0.1", help="Host to bind control server")
     sp_serve.add_argument("--port", type=int, default=8787, help="Port for control server")
-    sp_serve.set_defaults(func=lambda args: __import__('py_mcp_travelplanner.control_server').control_server.serve_control(host=args.host, port=args.port, background=False))
+    sp_serve.set_defaults(func=lambda args: _run_control_server(host=args.host, port=args.port))
 
     # mcp - start unified MCP server
     sp_mcp = subparsers.add_parser("mcp", help="Run unified MCP server via stdio")
-    sp_mcp.set_defaults(func=lambda args: __import__('py_mcp_travelplanner.mcp_server').mcp_server.run_mcp_server())
+    sp_mcp.set_defaults(func=lambda args: _run_mcp_server())
 
     # Add verbosity
     parser.add_argument("-v", "--verbose", action="count", default=0, help="Increase logging verbosity")

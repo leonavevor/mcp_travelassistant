@@ -6,14 +6,6 @@ on:
   pull_request:
     branches:
 
-inputs:
-  publish_to_pypi_nightly:
-      type: boolean
-      default: false
-  publish_to_pypi_main:
-    type: boolean
-    default: false
-
 jobs:
   test:
     runs-on: ubuntu-latest

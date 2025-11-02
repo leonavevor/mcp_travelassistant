@@ -1,13 +1,18 @@
 """Unified MCP Server for py_mcp_travelplanner.
 
-This server exposes a unified interface to control all travel planner services
-via the Model Context Protocol. It provides tools to start, stop, check health,
-and manage all the individual travel planner servers.
+This server exposes a unified interface to ALL travel planner services
+via the Model Context Protocol. It dynamically discovers and integrates
+all subservices (event, flight, hotel, weather, geocoder, finance) and
+exposes their tools through a single MCP interface.
+
+The server also provides control tools to start, stop, check health,
+and manage the individual travel planner servers.
 """
 from __future__ import annotations
 
+import importlib
 import logging
-from typing import Any
+from typing import Any, Dict, List
 
 from mcp.server import Server
 from mcp.server.stdio import stdio_server
@@ -20,17 +25,158 @@ LOG = logging.getLogger("py_mcp_travelplanner.mcp_server")
 # Create MCP server instance
 mcp = Server("py_mcp_travelplanner_unified")
 
+# Registry to track discovered services and their tools
+_SERVICE_REGISTRY: Dict[str, Any] = {}
+_TOOL_REGISTRY: Dict[str, Dict[str, Any]] = {}
+
+
+def _discover_subservices() -> List[str]:
+    """Discover all available subservice modules.
+
+    Returns:
+        List of subservice names (e.g., ['event_server', 'flight_server', ...])
+    """
+    servers = cli_handlers.list_servers()
+    LOG.info(f"Discovered {len(servers)} subservices: {servers}")
+    return servers
+
+
+def _load_subservice_mcp(service_name: str) -> Any:
+    """Dynamically import and return the MCP instance from a subservice.
+
+    Args:
+        service_name: Name of the service (e.g., 'event_server')
+
+    Returns:
+        The FastMCP instance from the service, or None if not found
+    """
+    if service_name in _SERVICE_REGISTRY:
+        return _SERVICE_REGISTRY[service_name]
+
+    try:
+        # Try to import the service's main MCP server module
+        # Pattern: py_mcp_travelplanner.event_server.event_server (contains 'mcp' instance)
+        base_name = service_name.replace('_server', '')
+        module_path = f"py_mcp_travelplanner.{service_name}.{base_name}_server"
+
+        LOG.debug(f"Attempting to import {module_path}")
+        module = importlib.import_module(module_path)
+
+        if hasattr(module, 'mcp'):
+            mcp_instance = module.mcp
+            _SERVICE_REGISTRY[service_name] = mcp_instance
+            LOG.info(f"Successfully loaded {service_name} MCP instance")
+            return mcp_instance
+        else:
+            LOG.warning(f"Module {module_path} does not have 'mcp' attribute")
+            return None
+
+    except Exception as e:
+        LOG.warning(f"Failed to load subservice {service_name}: {e}")
+        return None
+
+
+async def _extract_tools_from_subservice(service_name: str, mcp_instance: Any) -> List[Dict[str, Any]]:
+    """Extract tool definitions from a subservice MCP instance.
+
+    Args:
+        service_name: Name of the service for namespacing
+        mcp_instance: The FastMCP instance
+
+    Returns:
+        List of tool metadata dicts
+    """
+    tools = []
+
+    try:
+        # FastMCP instances have an async list_tools() method
+        if hasattr(mcp_instance, 'list_tools'):
+            service_tools = await mcp_instance.list_tools()
+
+            for tool in service_tools:
+                # Add namespace prefix to avoid collisions
+                original_name = tool.name
+                namespaced_name = f"{service_name.replace('_server', '')}.{original_name}"
+
+                tools.append({
+                    'service': service_name,
+                    'original_name': original_name,
+                    'namespaced_name': namespaced_name,
+                    'description': tool.description or '',
+                    'schema': tool.inputSchema or {},
+                    'mcp_instance': mcp_instance
+                })
+
+                LOG.debug(f"Registered tool: {namespaced_name}")
+
+    except Exception as e:
+        LOG.error(f"Failed to extract tools from {service_name}: {e}")
+
+    return tools
+
+
+async def _initialize_service_registry():
+    """Discover and register all subservices and their tools."""
+    global _TOOL_REGISTRY
+
+    if _TOOL_REGISTRY:
+        # Already initialized
+        return
+
+    LOG.info("Initializing unified service registry...")
+
+    services = _discover_subservices()
+
+    for service_name in services:
+        mcp_instance = _load_subservice_mcp(service_name)
+
+        if mcp_instance:
+            tools = await _extract_tools_from_subservice(service_name, mcp_instance)
+
+            for tool_info in tools:
+                _TOOL_REGISTRY[tool_info['namespaced_name']] = tool_info
+
+    LOG.info(f"Initialized {len(_TOOL_REGISTRY)} tools from {len(_SERVICE_REGISTRY)} services")
+
 
 @mcp.list_tools()
 async def list_tools() -> list[Tool]:
-    """List all available tools for managing travel planner servers."""
-    return [
+    """List all available tools for managing travel planner servers and subservice tools."""
+
+    # Initialize service registry on first call
+    await _initialize_service_registry()
+
+    # Control/Management tools
+    control_tools = [
         Tool(
             name="list_servers",
             description="List all discovered travel planner servers",
             inputSchema={
                 "type": "object",
                 "properties": {},
+                "required": []
+            }
+        ),
+        Tool(
+            name="list_services",
+            description="List all integrated subservices and their available tools",
+            inputSchema={
+                "type": "object",
+                "properties": {},
+                "required": []
+            }
+        ),
+        Tool(
+            name="get_service_manifest",
+            description="Get detailed manifest of all services and their tools",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "service": {
+                        "type": "string",
+                        "description": "Optional: specific service name to get manifest for"
+                    }
+                },
                 "required": []
             }
         ),
@@ -136,17 +282,78 @@ async def list_tools() -> list[Tool]:
         )
     ]
 
+    # Add all subservice tools with namespaced names
+    subservice_tools = []
+    for tool_name, tool_info in _TOOL_REGISTRY.items():
+        subservice_tools.append(
+            Tool(
+                name=tool_name,
+                description=f"[{tool_info['service']}] {tool_info['description']}",
+                inputSchema=tool_info['schema']
+            )
+        )
+
+    LOG.info(f"Listing {len(control_tools)} control tools and {len(subservice_tools)} subservice tools")
+
+    return control_tools + subservice_tools
+
 
 @mcp.call_tool()
 async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
-    """Handle tool calls for server management."""
+    """Handle tool calls for server management and subservice tools."""
 
+    # Control/Management tools
     if name == "list_servers":
         servers = cli_handlers.list_servers()
         return [TextContent(
             type="text",
             text=f"Discovered servers: {', '.join(servers) if servers else 'None'}"
         )]
+
+    elif name == "list_services":
+        await _initialize_service_registry()
+
+        services_info = []
+        for service_name, mcp_instance in _SERVICE_REGISTRY.items():
+            service_tools = [t for t in _TOOL_REGISTRY.values() if t['service'] == service_name]
+            tool_names = [t['original_name'] for t in service_tools]
+            services_info.append(f"  - {service_name}: {len(tool_names)} tools ({', '.join(tool_names)})")
+
+        text = f"Integrated Services ({len(_SERVICE_REGISTRY)}):\n" + "\n".join(services_info)
+        return [TextContent(type="text", text=text)]
+
+    elif name == "get_service_manifest":
+        await _initialize_service_registry()
+
+        service_filter = arguments.get("service")
+
+        manifest = {
+            "unified_server": "py_mcp_travelplanner_unified",
+            "total_services": len(_SERVICE_REGISTRY),
+            "total_tools": len(_TOOL_REGISTRY),
+            "services": {}
+        }
+
+        for service_name, mcp_instance in _SERVICE_REGISTRY.items():
+            if service_filter and service_filter != service_name:
+                continue
+
+            service_tools = [t for t in _TOOL_REGISTRY.values() if t['service'] == service_name]
+
+            manifest["services"][service_name] = {
+                "tool_count": len(service_tools),
+                "tools": [
+                    {
+                        "name": t['namespaced_name'],
+                        "original_name": t['original_name'],
+                        "description": t['description']
+                    }
+                    for t in service_tools
+                ]
+            }
+
+        import json
+        return [TextContent(type="text", text=json.dumps(manifest, indent=2))]
 
     elif name == "start_server":
         server = arguments["server"]
@@ -200,12 +407,16 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
         return [TextContent(type="text", text=f"Health check '{server}': {'healthy' if ok else 'unhealthy'}")]
 
     elif name == "get_status":
+        await _initialize_service_registry()
+
         servers = [p.name for p in cli_handlers._find_server_dirs()]
         serpapi = cli_handlers._resolve_serpapi_key()
         pids = cli_handlers.list_registered_pids()
 
         status_text = f"""Status:
   Discovered servers: {len(servers)} ({', '.join(servers) if servers else 'none'})
+  Integrated services: {len(_SERVICE_REGISTRY)}
+  Available tools: {len(_TOOL_REGISTRY)} subservice tools + 10 control tools
   SERPAPI_KEY: {'present' if serpapi else 'missing'}
   Running servers: {len(pids)} ({', '.join(pids.keys()) if pids else 'none'})"""
 
@@ -232,6 +443,46 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
             text = f"SERPAPI_KEY verification: FAILED\n  Error: {info.get('error', 'unknown')}"
 
         return [TextContent(type="text", text=text)]
+
+    # Subservice tool delegation
+    elif name in _TOOL_REGISTRY:
+        tool_info = _TOOL_REGISTRY[name]
+        mcp_instance = tool_info['mcp_instance']
+        original_name = tool_info['original_name']
+
+        try:
+            # Delegate to the subservice's MCP instance
+            # FastMCP instances have a call_tool method we can invoke
+            if hasattr(mcp_instance, '_tool_manager') and hasattr(mcp_instance._tool_manager, '_tools'):
+                # Get the actual tool function from FastMCP
+                tool_func = mcp_instance._tool_manager._tools.get(original_name)
+
+                if tool_func:
+                    LOG.info(f"Delegating {name} -> {tool_info['service']}.{original_name}")
+
+                    # Call the tool function with arguments
+                    result = tool_func(**arguments)
+
+                    # Handle async results
+                    if hasattr(result, '__await__'):
+                        result = await result
+
+                    # Convert result to TextContent
+                    import json
+                    if isinstance(result, dict):
+                        result_text = json.dumps(result, indent=2)
+                    else:
+                        result_text = str(result)
+
+                    return [TextContent(type="text", text=result_text)]
+                else:
+                    return [TextContent(type="text", text=f"Tool function not found: {original_name}")]
+            else:
+                return [TextContent(type="text", text=f"Cannot delegate to {tool_info['service']}: unsupported MCP instance")]
+
+        except Exception as e:
+            LOG.exception(f"Error calling subservice tool {name}: {e}")
+            return [TextContent(type="text", text=f"Error executing {name}: {str(e)}")]
 
     else:
         return [TextContent(type="text", text=f"Unknown tool: {name}")]

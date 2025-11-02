@@ -20,15 +20,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documentation
 - Updated README.md to remove outdated JSON runtime config references
-- Added `docs.not-needed/MCP_DEPENDENCY_FIX.md` with detailed fix explanation
-- Added `docs.not-needed/FIX_SUMMARY.md` with comprehensive summary
+- Added `docs/MCP_DEPENDENCY_FIX.md` with detailed fix explanation
+- Added `docs/FIX_SUMMARY.md` with comprehensive summary
 - Modernized configuration documentation with references to `examples/` directory
 
 ## [0.1.11] - 2025-10-31
 
 ### Added
 - Multi-source runtime configuration system (env vars > .env > YAML > defaults)
-- Comprehensive configuration documentation in `docs.not-needed/CONFIG_README.md`
+- Comprehensive configuration documentation in `docs/CONFIG_README.md`
 - 28 comprehensive tests for runtime configuration (all passing)
 - Configuration example script in `examples/config_example.py`
 

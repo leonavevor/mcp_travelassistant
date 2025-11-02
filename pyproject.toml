@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "py_mcp_travelplanner"
-version = "0.1.12"
+version = "0.1.13"
 description = "Minimal Azure Policy engine with file and sdk backends"
 readme = { file = "README.md", content-type = "text/markdown" }
 license = {text = "MIT"}
@@ -96,6 +96,7 @@ QuickStart = "https://github.com/leonavevor/mcp_travelassistant/blob/main/QUICKS
 [project.scripts]
 # Console script entry point for the consolidated py_mcp_travelplanner package.
 # so after installing py_mcp_travelplanner, users can run "py_mcp_travelplanner_cli" from the command line.
+py_mcp_travelplanner = "py_mcp_travelplanner.cli:main"
 py_mcp_travelplanner_cli = "py_mcp_travelplanner.cli:main"
 
 # Tooling metadata / mapping for maintainers. This is not standard pyproject metadata but helps

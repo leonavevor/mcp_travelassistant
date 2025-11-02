@@ -108,6 +108,108 @@ python py_mcp_travelplanner/control_server.py
 
 **Note:** Some servers may expect environment variables or API keys; check the server's README under the corresponding server folder for provider-specific setup.
 
+## Unified MCP Server — Access All Services Through One Interface
+
+The **unified MCP server** (`py_mcp_travelplanner/mcp_server.py`) provides a single entry point to all travel planning services. Instead of running and configuring multiple separate MCP servers, you can use ONE server that automatically discovers and integrates all available subservices.
+
+### Key Benefits
+
+- **Single Connection**: MCP clients connect to one server instead of six
+- **Auto-Discovery**: Automatically finds and loads all available services
+- **Namespaced Tools**: Clear tool organization (e.g., `event.search_events`, `flight.search_flights`)
+- **Service Management**: Start, stop, and monitor subservices through MCP tools
+- **Unified Interface**: Consistent access patterns across all travel services
+
+### Running the Unified Server
+
+```bash
+# Run the unified MCP server
+python -m py_mcp_travelplanner.mcp_server
+
+# Or via CLI
+py-mcp-travel unified
+```
+
+### Available Services & Tools
+
+The unified server integrates:
+
+| Service | Tools | Description |
+|---------|-------|-------------|
+| **event** | `search_events`, `get_event_details`, `list_events` | Event search and discovery |
+| **flight** | `search_flights`, `get_flight_details`, `list_flights` | Flight search and booking |
+| **hotel** | `search_hotels`, `get_hotel_details`, `list_hotels` | Hotel search and reservations |
+| **weather** | `get_weather`, `get_forecast` | Weather forecasts |
+| **geocoder** | `geocode`, `reverse_geocode` | Location geocoding |
+| **finance** | `get_exchange_rates`, `convert_currency` | Currency exchange |
+
+### Management Tools
+
+- `list_services` - Show all integrated services and their tools
+- `get_service_manifest` - Get detailed JSON manifest of all services
+- `get_status` - Overall system status
+- `start_server` / `stop_server` - Manage individual subservices
+- `health_check` - Check service health
+
+### Claude Desktop Configuration
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "travel_planner_local": {
+      "command": "python",
+      "args": ["-m", "py_mcp_travelplanner.mcp_server"],
+      "env": {
+        "SERPAPI_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+### Example Usage
+
+Once connected, use namespaced tool names:
+
+```python
+# Search for events in New York
+event.search_events({
+  "query": "concerts",
+  "location": "New York",
+  "date_filter": "week"
+})
+
+# Search for flights
+flight.search_flights({
+  "departure_id": "JFK",
+  "arrival_id": "LAX",
+  "outbound_date": "2025-06-15"
+})
+
+# Get weather forecast
+weather.get_forecast({
+  "location": "New York",
+  "days": 7
+})
+```
+
+### Documentation
+
+For complete details about the unified server architecture, see **[docs/UNIFIED_SERVER.md](docs/UNIFIED_SERVER.md)**.
+
+### CLI
+
+# run the weather server
+python py_mcp_travelplanner/weather_server/main.py
+
+# run the control server (if present)
+python py_mcp_travelplanner/control_server.py
+```
+
+**Note:** Some servers may expect environment variables or API keys; check the server's README under the corresponding server folder for provider-specific setup.
+
 ### CLI
 
 A simple CLI is available under `py_mcp_travelplanner/cli.py` and `py_mcp_travelplanner/cli_handlers.py`. You can run the CLI script to access helper commands used in development:
@@ -377,6 +479,83 @@ print(requests.post(f"{BASE}/start_all?dry=false").json())
 print(requests.post(f"{BASE}/test_key").json())
 ```
 
+## Advanced Usage: Multi-Server Orchestration & HTTP API
+
+### Running Individual Servers (stdio or HTTP)
+
+Each backend server (weather, event, hotel, flight, finance, geocoder) can be started with either stdio (default) or HTTP transport, and exposes a manifest for tool discovery:
+
+```bash
+# Start weather server with HTTP API
+python -m py_mcp_travelplanner.weather_server.main --transport http --host 127.0.0.1 --port 8791
+
+# Start event server with stdio (default)
+python -m py_mcp_travelplanner.event_server.main
+
+# Print tool manifest/schema for debugging
+python -m py_mcp_travelplanner.weather_server.main --manifest
+```
+
+### Unified Launcher Script
+
+You can launch all servers from a single config file (YAML or JSON) using the provided script:
+
+```bash
+python scripts/run_mcp_from_config.py --config runtime_config.yaml
+```
+
+Example config (runtime_config.yaml):
+```yaml
+servers:
+  weather:
+    enabled: true
+    transport: http
+    host: 127.0.0.1
+    port: 8791
+  event:
+    enabled: true
+    transport: http
+    host: 127.0.0.1
+    port: 8796
+  hotel:
+    enabled: true
+    transport: http
+    host: 127.0.0.1
+    port: 8795
+  flight:
+    enabled: true
+    transport: http
+    host: 127.0.0.1
+    port: 8793
+  finance:
+    enabled: true
+    transport: http
+    host: 127.0.0.1
+    port: 8792
+  geocoder:
+    enabled: true
+    transport: http
+    host: 127.0.0.1
+    port: 8794
+SERPAPI_KEY: "your_serpapi_key_here"
+```
+
+This will launch all enabled servers with the specified transport and ports. Press Ctrl+C to stop all servers.
+
+### Integration Testing: HTTP Endpoints & Manifest
+
+You can test HTTP endpoints and manifest output for any server:
+
+```bash
+# Test weather server HTTP endpoint
+curl http://127.0.0.1:8791/manifest
+
+# Or print manifest to stdout
+python -m py_mcp_travelplanner.weather_server.main --manifest
+```
+
+You can also write integration tests in pytest to verify HTTP endpoints and manifest output. See the 'tests/' folder for examples.
+
 ## Tests
 
 Run the test suite with pytest:
@@ -443,4 +622,3 @@ This repository is a learning / POC project showcasing modular service layouts, 
 ## Contact
 
 For questions or help, open an issue in this repository with details about your environment and the problem you're encountering.
-

@@ -88,6 +88,25 @@ async def _extract_tools_from_subservice(service_name: str, mcp_instance: Any) -
     """
     tools = []
 
+    def _normalize_schema(schema: Dict[str, Any]) -> Dict[str, Any]:
+        """Ensure array properties have 'items' definitions to satisfy MCP validators.
+        If missing, inject a permissive items schema of type 'string'.
+        (We choose 'string' as a safe fallback; specific tools can refine further.)"""
+        if not isinstance(schema, dict):
+            return schema
+        if schema.get('type') == 'object':
+            props = schema.get('properties', {})
+            if isinstance(props, dict):
+                for pname, pschema in props.items():
+                    if isinstance(pschema, dict) and pschema.get('type') == 'array':
+                        if 'items' not in pschema:
+                            pschema['items'] = {'type': 'string'}
+                        else:
+                            items = pschema['items']
+                            if isinstance(items, dict) and 'type' not in items and '$ref' not in items:
+                                items['type'] = 'string'
+        return schema
+
     try:
         # FastMCP instances have an async list_tools() method
         if hasattr(mcp_instance, 'list_tools'):
@@ -98,12 +117,14 @@ async def _extract_tools_from_subservice(service_name: str, mcp_instance: Any) -
                 original_name = tool.name
                 namespaced_name = f"{service_name.replace('_server', '')}.{original_name}"
 
+                normalized_schema = _normalize_schema(tool.inputSchema or {})
+
                 tools.append({
                     'service': service_name,
                     'original_name': original_name,
                     'namespaced_name': namespaced_name,
                     'description': tool.description or '',
-                    'schema': tool.inputSchema or {},
+                    'schema': normalized_schema,
                     'mcp_instance': mcp_instance
                 })
 
@@ -503,4 +524,3 @@ def run_mcp_server():
 
 if __name__ == "__main__":
     run_mcp_server()
-

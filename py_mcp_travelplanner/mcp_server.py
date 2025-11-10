@@ -475,18 +475,36 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
             # Delegate to the subservice's MCP instance
             # FastMCP instances have a call_tool method we can invoke
             if hasattr(mcp_instance, '_tool_manager') and hasattr(mcp_instance._tool_manager, '_tools'):
-                # Get the actual tool function from FastMCP
-                tool_func = mcp_instance._tool_manager._tools.get(original_name)
+                # Get the actual tool function (may be a FastMCP Tool wrapper) from FastMCP
+                tool_obj = mcp_instance._tool_manager._tools.get(original_name)
 
-                if tool_func:
+                if tool_obj:
                     LOG.info(f"Delegating {name} -> {tool_info['service']}.{original_name}")
 
-                    # Call the tool function with arguments
-                    result = tool_func(**arguments)
-
-                    # Handle async results
-                    if hasattr(result, '__await__'):
-                        result = await result
+                    result = None
+                    try:
+                        if callable(tool_obj):
+                            # Older versions or direct function references
+                            result = tool_obj(**arguments)
+                            if hasattr(result, '__await__'):
+                                result = await result
+                        elif hasattr(tool_obj, 'run'):
+                            # FastMCP Tool wrapper exposes async run(arguments_dict)
+                            run_result = tool_obj.run(arguments)
+                            if hasattr(run_result, '__await__'):
+                                result = await run_result
+                            else:
+                                result = run_result
+                        else:
+                            return [TextContent(type="text", text=f"Unsupported tool wrapper type for {name}: {type(tool_obj)}")]
+                    except TypeError as e:
+                        # Retry using .run if direct call failed due to signature mismatch
+                        if hasattr(tool_obj, 'run'):
+                            LOG.debug(f"Direct call failed for {name} ({e}); retrying with .run()")
+                            run_result = tool_obj.run(arguments)
+                            result = await run_result if hasattr(run_result, '__await__') else run_result
+                        else:
+                            raise
 
                     # Convert result to TextContent
                     import json

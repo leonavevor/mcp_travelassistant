@@ -114,8 +114,9 @@ async def _extract_tools_from_subservice(service_name: str, mcp_instance: Any) -
 
             for tool in service_tools:
                 # Add namespace prefix to avoid collisions
+                # Use underscore instead of dot to comply with MCP tool naming rules
                 original_name = tool.name
-                namespaced_name = f"{service_name.replace('_server', '')}.{original_name}"
+                namespaced_name = f"{service_name.replace('_server', '')}_{original_name}"
 
                 normalized_schema = _normalize_schema(tool.inputSchema or {})
 

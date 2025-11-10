@@ -66,7 +66,9 @@ def _find_server_dirs() -> List[pathlib.Path]:
         package_dir = pathlib.Path(__file__).resolve().parent
         try:
             for child in package_dir.iterdir():
-                if child.is_dir():
+                # Only consider directories ending with "_server" as valid server directories
+                # This prevents scanning site-packages or other unrelated directories
+                if child.is_dir() and child.name.endswith("_server"):
                     main_py = child / "main.py"
                     if main_py.exists():
                         candidates.add(child)

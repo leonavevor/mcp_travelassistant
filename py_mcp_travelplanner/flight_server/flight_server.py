@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from mcp.server.fastmcp import FastMCP
 
 # Directory to store flight search results
-FLIGHTS_DIR = "flights"
+FLIGHTS_DIR = "./outputs/flights"
 
 # Initialize FastMCP server
 mcp = FastMCP("flight-assistant")

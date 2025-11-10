@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from mcp.server.fastmcp import FastMCP
 
 # Directory to store hotel search results
-HOTELS_DIR = "hotels"
+HOTELS_DIR = "./outputs/hotels"
 
 # Initialize FastMCP server
 mcp = FastMCP("hotel-assistant")

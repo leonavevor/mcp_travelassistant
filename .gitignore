@@ -172,9 +172,6 @@ py_mcp_travelplanner/*/flights/
 # Lock files
 uv.lock
 
-
-
-
 # Backup files
 *~
 *.bak
@@ -183,5 +180,8 @@ uv.lock
 !README.md
 !*.py
 
-
-
+#### Test output files ####
+# All JSON outputs from test runs
+**/outputs/
+**/outputs/**/*.json
+**/outputs/**/

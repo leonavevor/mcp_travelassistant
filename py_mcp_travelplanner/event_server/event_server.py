@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from mcp.server.fastmcp import FastMCP
 
 # Directory to store event search results
-EVENTS_DIR = "events"
+EVENTS_DIR = "./outputs/events"
 
 # Initialize FastMCP server
 mcp = FastMCP("event-assistant")

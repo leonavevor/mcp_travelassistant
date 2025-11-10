@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from mcp.server.fastmcp import FastMCP
 
 # Directory to store finance search results
-FINANCE_DIR = "finance"
+FINANCE_DIR = "./outputs/finance"
 
 # Initialize FastMCP server
 mcp = FastMCP("finance-assistant")

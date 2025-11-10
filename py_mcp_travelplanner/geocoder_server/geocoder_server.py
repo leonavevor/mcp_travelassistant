@@ -8,8 +8,8 @@ from geopy.extra.rate_limiter import RateLimiter
 from geopy.exc import GeocoderTimedOut, GeocoderUnavailable
 from mcp.server.fastmcp import FastMCP
 
-# Directory to store geocoded results
-GEOCODE_DIR = "geocoded_locations"
+# Directory to store geocoded location data
+GEOCODE_DIR = "./outputs/geocoded_locations"
 
 # Initialize FastMCP server
 mcp = FastMCP("geocoder")

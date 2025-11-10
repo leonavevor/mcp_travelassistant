@@ -88,6 +88,25 @@ async def _extract_tools_from_subservice(service_name: str, mcp_instance: Any) -
     """
     tools = []
 
+    def _normalize_schema(schema: Dict[str, Any]) -> Dict[str, Any]:
+        """Ensure array properties have 'items' definitions to satisfy MCP validators.
+        If missing, inject a permissive items schema of type 'string'.
+        (We choose 'string' as a safe fallback; specific tools can refine further.)"""
+        if not isinstance(schema, dict):
+            return schema
+        if schema.get('type') == 'object':
+            props = schema.get('properties', {})
+            if isinstance(props, dict):
+                for pname, pschema in props.items():
+                    if isinstance(pschema, dict) and pschema.get('type') == 'array':
+                        if 'items' not in pschema:
+                            pschema['items'] = {'type': 'string'}
+                        else:
+                            items = pschema['items']
+                            if isinstance(items, dict) and 'type' not in items and '$ref' not in items:
+                                items['type'] = 'string'
+        return schema
+
     try:
         # FastMCP instances have an async list_tools() method
         if hasattr(mcp_instance, 'list_tools'):
@@ -98,12 +117,14 @@ async def _extract_tools_from_subservice(service_name: str, mcp_instance: Any) -
                 original_name = tool.name
                 namespaced_name = f"{service_name.replace('_server', '')}.{original_name}"
 
+                normalized_schema = _normalize_schema(tool.inputSchema or {})
+
                 tools.append({
                     'service': service_name,
                     'original_name': original_name,
                     'namespaced_name': namespaced_name,
                     'description': tool.description or '',
-                    'schema': tool.inputSchema or {},
+                    'schema': normalized_schema,
                     'mcp_instance': mcp_instance
                 })
 
@@ -454,18 +475,36 @@ async def call_tool(name: str, arguments: dict[str, Any]) -> list[TextContent]:
             # Delegate to the subservice's MCP instance
             # FastMCP instances have a call_tool method we can invoke
             if hasattr(mcp_instance, '_tool_manager') and hasattr(mcp_instance._tool_manager, '_tools'):
-                # Get the actual tool function from FastMCP
-                tool_func = mcp_instance._tool_manager._tools.get(original_name)
+                # Get the actual tool function (may be a FastMCP Tool wrapper) from FastMCP
+                tool_obj = mcp_instance._tool_manager._tools.get(original_name)
 
-                if tool_func:
+                if tool_obj:
                     LOG.info(f"Delegating {name} -> {tool_info['service']}.{original_name}")
 
-                    # Call the tool function with arguments
-                    result = tool_func(**arguments)
-
-                    # Handle async results
-                    if hasattr(result, '__await__'):
-                        result = await result
+                    result = None
+                    try:
+                        if callable(tool_obj):
+                            # Older versions or direct function references
+                            result = tool_obj(**arguments)
+                            if hasattr(result, '__await__'):
+                                result = await result
+                        elif hasattr(tool_obj, 'run'):
+                            # FastMCP Tool wrapper exposes async run(arguments_dict)
+                            run_result = tool_obj.run(arguments)
+                            if hasattr(run_result, '__await__'):
+                                result = await run_result
+                            else:
+                                result = run_result
+                        else:
+                            return [TextContent(type="text", text=f"Unsupported tool wrapper type for {name}: {type(tool_obj)}")]
+                    except TypeError as e:
+                        # Retry using .run if direct call failed due to signature mismatch
+                        if hasattr(tool_obj, 'run'):
+                            LOG.debug(f"Direct call failed for {name} ({e}); retrying with .run()")
+                            run_result = tool_obj.run(arguments)
+                            result = await run_result if hasattr(run_result, '__await__') else run_result
+                        else:
+                            raise
 
                     # Convert result to TextContent
                     import json
@@ -503,4 +542,3 @@ def run_mcp_server():
 
 if __name__ == "__main__":
     run_mcp_server()
-

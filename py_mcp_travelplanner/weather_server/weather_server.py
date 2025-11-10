@@ -5,8 +5,8 @@ from typing import List, Dict, Optional, Any, Tuple
 from datetime import datetime, timedelta
 from mcp.server.fastmcp import FastMCP
 
-# Directory to store weather search results
-WEATHER_DIR = "weather_data"
+# Directory to store weather data
+WEATHER_DIR = "tests/outputs/weather_data"
 
 # Initialize FastMCP server
 mcp = FastMCP("weather-search")
@@ -304,7 +304,8 @@ def get_weather_alerts(
     area: Optional[str] = None,
     region: Optional[str] = None,
     zone: Optional[str] = None,
-    point: Optional[Tuple[float, float]] = None,
+    # Changed from Optional[Tuple[float, float]] to Optional[List[float]] so JSON schema includes items
+    point: Optional[List[float]] = None,
     active_only: bool = True,
     urgency: Optional[str] = None,
     severity: Optional[str] = None,
@@ -317,7 +318,7 @@ def get_weather_alerts(
         area: Two-letter state/territory code (e.g., 'KS', 'TX')
         region: Region code (e.g., 'US')
         zone: Zone ID (e.g., 'ILZ014')
-        point: Tuple of (latitude, longitude) for point-based alerts
+        point: List of [latitude, longitude] for point-based alerts (must be length 2)
         active_only: If True, get only active alerts
         urgency: Filter by urgency (Immediate, Expected, Future, Past, Unknown)
         severity: Filter by severity (Extreme, Severe, Moderate, Minor, Unknown)
@@ -327,6 +328,19 @@ def get_weather_alerts(
         Dict containing weather alerts
     """
     
+    # Validate point structure if provided
+    if point is not None:
+        if not isinstance(point, list) or len(point) != 2:
+            return {"error": "point must be a list of [latitude, longitude]"}
+        try:
+            # Coerce to float to ensure proper formatting
+            lat = float(point[0])
+            lon = float(point[1])
+        except (TypeError, ValueError):
+            return {"error": "point values must be numeric (latitude, longitude)"}
+    else:
+        lat = lon = None
+
     # Build alerts endpoint
     if active_only:
         endpoint = f"{NWS_BASE_URL}/alerts/active"
@@ -341,8 +355,7 @@ def get_weather_alerts(
         params.append(f"region={region}")
     if zone:
         params.append(f"zone={zone}")
-    if point:
-        lat, lon = point
+    if lat is not None and lon is not None:
         params.append(f"point={lat},{lon}")
     if urgency:
         params.append(f"urgency={urgency}")

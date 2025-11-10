@@ -5,8 +5,8 @@ from typing import List, Dict, Optional, Any
 from datetime import datetime, timedelta
 from mcp.server.fastmcp import FastMCP
 
-# Directory to store weather search results
-WEATHER_DIR = "weather_data"
+# Directory to store weather data
+WEATHER_DIR = "tests/outputs/weather_data"
 
 # Initialize FastMCP server
 mcp = FastMCP("weather-assistant")

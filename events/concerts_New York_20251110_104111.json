@@ -1,0 +1,544 @@
+{
+  "search_metadata": {
+    "search_id": "concerts_New York_20251110_104111",
+    "query": "concerts",
+    "location": "New York",
+    "date_filter": null,
+    "event_type": null,
+    "language": "en",
+    "country": "us",
+    "search_timestamp": "2025-11-10T10:41:11.842649",
+    "total_results": 10
+  },
+  "search_parameters": {
+    "q": "concerts in New York",
+    "engine": "google_events",
+    "hl": "en",
+    "gl": "us"
+  },
+  "search_information": {
+    "events_results_state": "Results for exact spelling"
+  },
+  "events_results": [
+    {
+      "title": "Dru Hill",
+      "date": {
+        "start_date": "Nov 15",
+        "when": "Sat, Nov 15, 8:00 \u2013 9:30 PM"
+      },
+      "address": [
+        "Lehman Center for the Performing Arts, 250 Bedford Park Blvd W",
+        "Bronx, NY"
+      ],
+      "link": "https://open.spotify.com/concert/4KptVjTuVve1fzWGWOJZuR",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=3H6_-0cTTlImsFfson_SkzZcFvB7hlpy19IU3vO_0H8hoawK2dHN-8nDrGFxlhJ5UxykjVM9NxnBATboVnw8iMmpLgm4nBLC-wMpO8Gz9jvDeulCh4U",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c2f39c245bb439:0x213c4f822d2f4f85?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQIAxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c2f39c245bb439%3A0x213c4f822d2f4f85&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for Dru Hill with Christopher Williams at Lehman Center for the Performing Arts in Bronx on 11/15/2025 at 8:00 PM",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/4KptVjTuVve1fzWGWOJZuR",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Ticketmaster.com",
+          "link": "https://ticketmaster.evyy.net/c/4135324/271177/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fdru-hill-christopher-williams-bronx-new-york-11-15-2025%2Fevent%2F300062DEA2B039DC&utm_medium=affiliate",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Vividseats.com",
+          "link": "https://www.vividseats.com/dru-hill-tickets-bronx-lehman-performing-arts-center-11-15-2025--concerts-rb/production/5851724",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Stubhub.com",
+          "link": "https://www.stubhub.com/_C-412197?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-40287%7Cev-158723242%7Ccy-1047&ps_ev=158723242",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Viagogo.com",
+          "link": "https://www.viagogo.com/_C-412197?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-40287%7Cev-158723242%7Ccy-1047&ps_ev=158723242",
+          "link_type": "tickets"
+        }
+      ],
+      "venue": {
+        "name": "Lehman Center for the Performing Arts",
+        "rating": 4.6,
+        "reviews": 1688,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=Lehman+Center+for+the+Performing+Arts&ludocid=2394876522376679301&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVFyYXuvXfEa4aX3Z88l2Yow90W4nUqVh3aJxxWYB8E9F0k9RxPc2NTMk&s"
+    },
+    {
+      "title": "Ryan Castro",
+      "date": {
+        "start_date": "Nov 15",
+        "when": "Sat, Nov 15, 8:30 \u2013 10:00 PM"
+      },
+      "address": [
+        "Barclays Center, 620 Atlantic Ave",
+        "Brooklyn, NY"
+      ],
+      "link": "https://nyc-shows.brooklynvegan.com/events/2025/11/15/ryan-castro-tickets",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=TMlyaA6tY4nfPRQlKtJu1lq2KSCjKAyE2L8YnpWuANBGDutzvqIdbFSBAfKVCmk-fACrmXwnoL19-HHof1-vqRLWUY-lsSQJ4t8MwnWTitvWMgZ-ojM",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c25bae694479a3:0xb9949385da52e69e?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQICxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c25bae694479a3%3A0xb9949385da52e69e&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Ryan Castro brings the SEND\u00c9 WORLD TOUR 2025 to Brooklyn on Saturday, November 15.",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/1MPUhByMOJFVWhFxSBDHeV",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Ticketmaster.com",
+          "link": "https://ticketmaster.evyy.net/c/253185/264167/4272?SharedId=DoStuff&u=https%3A%2F%2Fwww.ticketmaster.com%2Fevent%2F300062F1E0B849E0%3FCAMEFROM%3DCFC_BARCLAYS_CTR_WEB_EVENTPAGE_RYANCASTRO%26utm_campaign%3DFY25_BC_eventpage_ryancastro%26utm_source%3Dbarclayscenter.com%26utm_medium%3Dweb",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Tixel.com",
+          "link": "https://tixel.com/us/music-tickets/2025/11/15/ryan-castro-sende-world-tour-202",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Festivaly.eu",
+          "link": "https://festivaly.eu/en/ryan-castro-sende-world-tour-2025-barclays-center-brooklyn-2025",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Vividseats.com",
+          "link": "https://www.vividseats.com/ryan-castro-tickets-brooklyn-barclays-center-11-15-2025--concerts-latin-music/production/5935430",
+          "link_type": "tickets"
+        }
+      ],
+      "venue": {
+        "name": "Barclays Center",
+        "rating": 4.5,
+        "reviews": 22325,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=Barclays+Center&ludocid=13372475396672644766&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE98I-gzNTVTac15KpjmUFNB8bFEjdPBWuOJHcKXQ0rH65L_wi-OyIpo8&s"
+    },
+    {
+      "title": "IC3PEAK",
+      "date": {
+        "start_date": "Nov 14",
+        "when": "Fri, Nov 14, 7 \u2013 11 PM"
+      },
+      "address": [
+        "HK Hall, 605 W 48th St",
+        "New York, NY"
+      ],
+      "link": "https://open.spotify.com/concert/6Wt2FL9HNtVXrWdpdptDP6",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=u1JfuO6VbL6ihUZo5UbS1vKSpHE3vAPSGcO43-buK8B0GbBq4SyGciBDXmhsZsf_HGtFLP_Tq7Pzx0ZArSkakPlfGCEr4cqXlukpexrPQ5ytOM-KCFI",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c2584fc6451b83:0x3b265c973ad3fbd3?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQIExAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c2584fc6451b83%3A0x3b265c973ad3fbd3&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for IC3PEAK at HK HALL in New York City on 11/14/2025 at 7:00 PM",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/6Wt2FL9HNtVXrWdpdptDP6",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Bandsintown.com",
+          "link": "https://www.bandsintown.com/e/106203943?app_id=szm_feed&came_from=283&utm_medium=web&utm_source=szm_feed&utm_campaign=event",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Stubhub.com",
+          "link": "https://www.stubhub.com/_C-173729?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-102061%7Cev-159659001%7Ccy-4856&ps_ev=159659001",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Viagogo.com",
+          "link": "https://www.viagogo.com/_C-173729?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-102061%7Cev-159659001%7Ccy-4856&ps_ev=159659001",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Shazam",
+          "link": "https://www.shazam.com/track/235698835/they-beat-you",
+          "link_type": "more info"
+        }
+      ],
+      "venue": {
+        "name": "HK Hall",
+        "rating": 3.8,
+        "reviews": 1457,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=HK+Hall&ludocid=4262195901949541331&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxwr8c9zZ_H5jFDyoKu8_Wna2Lzn69fSk6twuXAte1YFTMjwk7LaRNLmA&s"
+    },
+    {
+      "title": "Tye Tribbett",
+      "date": {
+        "start_date": "Nov 16",
+        "when": "Sun, Nov 16, 7:00 \u2013 8:30 PM"
+      },
+      "address": [
+        "Brooklyn Paramount, 385 Flatbush Ave Ext",
+        "Brooklyn, NY"
+      ],
+      "link": "https://open.spotify.com/concert/4DxQSYX8wEGO2lJUEXmKbs",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=WBUUhxDDKvs-tSDugZVZ5bPjx8AMr0p1Hfq1IGi8VCSmDY-GtobOhDG8FlzP0y0rkYkgaO9tjFr2iAFVRfaJx-Z42MAuvwaNAOcai8Zouh_d8CNtcb8",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c25b03462fbacf:0x1a59a547d47eeb2a?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQIGxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c25b03462fbacf%3A0x1a59a547d47eeb2a&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for Tye Tribbett with Kierra Sheard at Brooklyn Paramount in Brooklyn on 11/16/2025 at 7:00 PM",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/4DxQSYX8wEGO2lJUEXmKbs",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Ticketmaster.com",
+          "link": "https://ticketmaster.evyy.net/c/4135324/271177/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Ftye-tribbett-brooklyn-new-york-11-16-2025%2Fevent%2F000062FF95C33553&utm_medium=affiliate",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Vividseats.com",
+          "link": "https://www.vividseats.com/tye-tribbett-tickets-brooklyn-brooklyn-paramount-11-16-2025--concerts-rb/production/5917791",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Seatgeek.com",
+          "link": "https://seatgeek.com/tye-tribbett-tickets/brooklyn-new-york-brooklyn-paramount-2025-11-16-7-pm/concert/17657372?gclsrc=%7BGOOGLE-ADS-CLICK-SOURCE%7D&refob=mta&ref_price=97.57",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Stubhub.com",
+          "link": "https://www.stubhub.com/_C-51685?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-93062%7Cev-159098936%7Ccy-59985&ps_ev=159098936",
+          "link_type": "tickets"
+        }
+      ],
+      "venue": {
+        "name": "Brooklyn Paramount",
+        "rating": 4.7,
+        "reviews": 1415,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=Brooklyn+Paramount&ludocid=1898730445839723306&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzCUmlz6V1Ar0FsLeY0BGEeRjWbmeYh6z7c6unuwFUN6Fcvy5DGCyWI0&s"
+    },
+    {
+      "title": "Martik",
+      "date": {
+        "start_date": "Nov 15",
+        "when": "Sat, Nov 15, 8:00 \u2013 9:30 PM"
+      },
+      "address": [
+        "The Space at Westbury, 250 Post Ave",
+        "Westbury, NY"
+      ],
+      "link": "https://open.spotify.com/concert/3cDEiseUa9ZRYw82YmmNpv",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=EDCWRmUidB1y-xh57a9jQUI-E-V3idqgCtzQfG9NUho8NpLkhFk7MQxJZESBP9Ks3YXwTikc5ICGJ7l6bGAfEc9PPA2C2lb4jflGg-Wtk2jCCLmDnZY",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c28714b8463d33:0x5b9f3128d8936154?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQIIxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c28714b8463d33%3A0x5b9f3128d8936154&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for Martik at The Space at Westbury Theater in Westbury on 11/15/2025 at 8:00 PM",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/3cDEiseUa9ZRYw82YmmNpv",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Ticketmaster.com",
+          "link": "https://ticketmaster.evyy.net/c/4135324/271177/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fmartik-westbury-new-york-11-15-2025%2Fevent%2F000062CADE097CBB%3Futm_content%3Dhotevent&utm_medium=affiliate",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Vividseats.com",
+          "link": "https://www.vividseats.com/martik-tickets-westbury-the-space-at-westbury-11-15-2025--concerts-world-music/production/5813007",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Seatgeek.com",
+          "link": "https://seatgeek.com/martik-tickets/westbury-new-york-the-space-at-westbury-1-2025-11-15-8-pm/concert/17566369?gclsrc=%7BGOOGLE-ADS-CLICK-SOURCE%7D&refob=mta&ref_price=101.27",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Stubhub.com",
+          "link": "https://www.stubhub.com/_C-150016703?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-20865%7Cev-158495983%7Ccy-80427&ps_ev=158495983",
+          "link_type": "tickets"
+        }
+      ],
+      "venue": {
+        "name": "The Space at Westbury",
+        "rating": 4.5,
+        "reviews": 822,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=The+Space+at+Westbury&ludocid=6602049630250426708&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgOb1bbr_EX_a5rhaivCRdKuZ20Pqli0DTDL72X2OWjEe1fCBE1CQszIo&s"
+    },
+    {
+      "title": "Quevedo",
+      "date": {
+        "start_date": "Nov 13",
+        "when": "Thu, Nov 13, 7:00 \u2013 8:30 PM"
+      },
+      "address": [
+        "Brooklyn Paramount, 385 Flatbush Ave Ext",
+        "Brooklyn, NY"
+      ],
+      "link": "https://open.spotify.com/concert/7MaX9WbfgKJwXhCiT5JZKl",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=WBUUhxDDKvs-tSDugZVZ5bPjx8AMr0p1Hfq1IGi8VCSmDY-GtobOhDG8FlzP0y0rkYkgaO9tjFr2iAFVRfaJx-Z42MAuvwaNAOcai8Zouh_d8CNtcb8",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c25b03462fbacf:0x1a59a547d47eeb2a?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQIKxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c25b03462fbacf%3A0x1a59a547d47eeb2a&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for Quevedo at Brooklyn Paramount in Brooklyn on 11/13/2025 at 7:00 PM",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/7MaX9WbfgKJwXhCiT5JZKl",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Ticketmaster.com",
+          "link": "https://ticketmaster.evyy.net/c/4135324/271177/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fquevedo-buenas-noches-usa-tour-brooklyn-new-york-11-13-2025%2Fevent%2F0000628B84F218CE%3Futm_content%3Dhotevent&utm_medium=affiliate",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Gametime.co",
+          "link": "https://gametime.co/concert/quevedo-tickets/11-13-2025-brooklyn-ny-brooklyn-paramount-theatre/events/67fd59251e09bce3c3f4b40d",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Vividseats.com",
+          "link": "https://www.vividseats.com/quevedo-tickets-brooklyn-brooklyn-paramount-11-13-2025--concerts-latin-music/production/5696844",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Seatgeek.com",
+          "link": "https://seatgeek.com/quevedo-tickets/brooklyn-new-york-brooklyn-paramount-2025-11-13-7-pm/concert/17481202?gclsrc=%7BGOOGLE-ADS-CLICK-SOURCE%7D&refob=mta&ref_price=144.37",
+          "link_type": "tickets"
+        }
+      ],
+      "venue": {
+        "name": "Brooklyn Paramount",
+        "rating": 4.7,
+        "reviews": 1415,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=Brooklyn+Paramount&ludocid=1898730445839723306&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU49YS-jGwt-3VfR4IKqSU8BFfc6g8A3wppQi3odueZ1ocdq9rJkIiwbY&s"
+    },
+    {
+      "title": "Alessia Cara",
+      "date": {
+        "start_date": "Nov 10",
+        "when": "Mon, Nov 10, 7:00 \u2013 8:30 PM"
+      },
+      "address": [
+        "Irving Plaza, 17 Irving Pl",
+        "New York, NY"
+      ],
+      "link": "https://open.spotify.com/concert/0cW1C8prIsMW1VnFkGjuhx",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=jTWTRbQ-93hoNWLSkc894xws894UPZ3eKv-qpl8-DRHDMJwuJdcSu65GO5yswdGVMEqaLispU4NW68hqt6T9SYodYjBrJUcCDUHJVB3bq-xGpSCoA8s",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c2599f49ef3ae9:0xfef9fa6b6a342ec2?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQIMxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c2599f49ef3ae9%3A0xfef9fa6b6a342ec2&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for Alessia Cara with Indy at Irving Plaza Powered By Verizon 5G in New York on 11/10/2025 at 7:00 PM",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/0cW1C8prIsMW1VnFkGjuhx",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Ticketmaster.com",
+          "link": "https://ticketmaster.evyy.net/c/6580072/271177/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Falessia-cara-love-hyperbole-tour-new-york-new-york-11-10-2025%2Fevent%2F000062B4C17F4FA2&utm_medium=affiliate",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Premiumseatsusa.com",
+          "link": "https://www.premiumseatsusa.com/concerts/pop-rock/alessia-cara/6989512",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Vividseats.com",
+          "link": "https://www.vividseats.com/alessia-cara-tickets-brooklyn-brooklyn-paramount-4-11-2025--concerts-pop/production/5564229",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Seatgeek.com",
+          "link": "https://seatgeek.com/alessia-cara-tickets/new-york-new-york-irving-plaza-2025-11-10-8-pm/concert/17543510?gclsrc=%7BGOOGLE-ADS-CLICK-SOURCE%7D&refob=mta&ref_price=79.06",
+          "link_type": "tickets"
+        }
+      ],
+      "venue": {
+        "name": "Irving Plaza",
+        "rating": 4.3,
+        "reviews": 3099,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=Irving+Plaza&ludocid=18372991494084898498&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQExEYulgI13r5zZGjs31g2ZeLWe3aPZXV1tDe3fyBS-XEuGvazYQrGCMM&s"
+    },
+    {
+      "title": "David Garrett",
+      "date": {
+        "start_date": "Nov 10",
+        "when": "Mon, Nov 10, 8:00 \u2013 9:30 PM"
+      },
+      "address": [
+        "The Town Hall, 123 W 43rd St",
+        "New York, NY"
+      ],
+      "link": "https://open.spotify.com/concert/1JNYcW4qFW98WcE8sbRfr6",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=Z_lnpw29_KoG5DEJlbi508LeqDoQt7pM3Kwe36gd9NaAdLkjMiqcT0hlJBWG94Mo9J4DSyQuJRPIQyolB605zh_0y6t6PoQcSAzZlA2ihD1d3vpYPvw",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c2585539da8f73:0x10f582619d9077b5?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQIOxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c2585539da8f73%3A0x10f582619d9077b5&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for David Garrett at Town Hall in New York on 11/10/2025 at 8:00 PM",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/1JNYcW4qFW98WcE8sbRfr6",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Ticketmaster.com",
+          "link": "https://ticketmaster.evyy.net/c/4135324/271177/4272?u=https%3A%2F%2Fwww.ticketmaster.com%2Fdavid-garrett-new-york-new-york-11-10-2025%2Fevent%2F03006308C3810F2A%3Futm_content%3Dhotevent&utm_medium=affiliate",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Vividseats.com",
+          "link": "https://www.vividseats.com/david-garrett-tickets-new-york-town-hall-new-york-11-10-2025--concerts-classical/production/5935375",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Stubhub.com",
+          "link": "https://www.stubhub.com/_C-10478?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-66771%7Cev-159157945%7Ccy-79668&ps_ev=159157945",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Viagogo.com",
+          "link": "https://www.viagogo.com/_C-10478?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-66771%7Cev-159157945%7Ccy-79668&ps_ev=159157945",
+          "link_type": "tickets"
+        }
+      ],
+      "venue": {
+        "name": "The Town Hall",
+        "rating": 4.5,
+        "reviews": 2595,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=The+Town+Hall&ludocid=1222026229667887029&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRC_Bu0zpQjXhmfHxExaOm9WTDSvQq-1yWeRFK3QQfinqJDKYKfJoIMmW4&s"
+    },
+    {
+      "title": "WONHO",
+      "date": {
+        "start_date": "Nov 16",
+        "when": "Sun, Nov 16, 7 \u2013 10 PM"
+      },
+      "address": [
+        "Terminal 5, 610 W 56th St #612",
+        "New York, NY"
+      ],
+      "link": "https://open.spotify.com/concert/37TyL1rJHLOmmPPlnaOyeK",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=aTVG3orL_EKfCAqLByU4bpz_JDcPW6NgE53QDBRCwYDybBmrLOlkTmFFqH-JGYUR2hp4tS1RfpOEW-dr7Rdc3B6pgTnJoSdYvtDqBrYmvfDO2uEMkiw",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c2585b122ccff3:0xc931f0108d1c2da1?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQIQxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c2585b122ccff3%3A0xc931f0108d1c2da1&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for WONHO at Terminal 5 in New York on 11/16/2025 at 7:00 PM",
+      "ticket_info": [
+        {
+          "source": "Axs.com",
+          "link": "https://www.axs.com/events/1150096/2025-wonho-world-tour-stay-awake-in-north-america-tickets",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/37TyL1rJHLOmmPPlnaOyeK",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Stubhub.com",
+          "link": "https://www.stubhub.com/_C-150421629?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-5999%7Cev-159505376%7Ccy-79668&ps_ev=159505376",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Viagogo.com",
+          "link": "https://www.viagogo.com/_C-150421629?pcid=PSUSAEVECONALLEF426C5CF9E&ps_p=8&ps_placement=eventfeed&ps=vn-5999%7Cev-159505376%7Ccy-79668&ps_ev=159505376",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Music Hall of Williamsburg",
+          "link": "https://www.musichallofwilliamsburg.com/new-york-metro/shows/detail/1150096-2025-wonho-world-tour-stay-awake-in-north-america",
+          "link_type": "more info"
+        }
+      ],
+      "venue": {
+        "name": "Terminal 5",
+        "rating": 4.2,
+        "reviews": 4097,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=Terminal+5&ludocid=14497632629359914401&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCXVcMOvJvINYTElSxp_lU3pnZt9fJgvKQ0IP73cBkrDxXRgXfi81i3kQ&s"
+    },
+    {
+      "title": "RAIN",
+      "date": {
+        "start_date": "Nov 23",
+        "when": "Sun, Nov 23, 7:00 \u2013 8:30 PM"
+      },
+      "address": [
+        "Barclays Center, 620 Atlantic Ave",
+        "Brooklyn, NY"
+      ],
+      "link": "https://open.spotify.com/concert/3VfPevYxPRxckaTwby3G6T",
+      "event_location_map": {
+        "image": "https://www.google.com/maps/vt/data=TMlyaA6tY4nfPRQlKtJu1lq2KSCjKAyE2L8YnpWuANBGDutzvqIdbFSBAfKVCmk-fACrmXwnoL19-HHof1-vqRLWUY-lsSQJ4t8MwnWTitvWMgZ-ojM",
+        "link": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x89c25bae694479a3:0xb9949385da52e69e?sa=X&ved=2ahUKEwjrt9CmpeeQAxVdMVkFHRnZBkoQ9eIBegQISxAA&hl=en&gl=us",
+        "serpapi_link": "https://serpapi.com/search.json?data=%214m2%213m1%211s0x89c25bae694479a3%3A0xb9949385da52e69e&engine=google_maps&gl=us&google_domain=google.com&hl=en&q=concerts+in+New+York&type=place"
+      },
+      "description": "Find tickets for Rain at Barclays Center in Brooklyn on 11/23/2025 at 7:00 PM",
+      "ticket_info": [
+        {
+          "source": "Spotify.com",
+          "link": "https://open.spotify.com/concert/3VfPevYxPRxckaTwby3G6T",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Ticketmaster.com",
+          "link": "https://ticketmaster.evyy.net/c/253185/264167/4272?SharedId=DoStuff&u=https%3A%2F%2Fwww.ticketmaster.com%2Fevent%2F3000632B85AC0EB5%3FCAMEFROM%3DCFC_BARCLAYS_CTR_WEB_EVENTPAGE_RAIN%26utm_campaign%3DFY26_BC_eventpage_rain%26utm_source%3Dbarclayscenter.com%26utm_medium%3Dweb",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Gametime.co",
+          "link": "https://gametime.co/concert/rain-tickets/11-23-2025-brooklyn-ny-barclays-center/events/68c878bae2180ac821324c6e",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Tixel.com",
+          "link": "https://tixel.com/us/music-tickets/2025/11/23/rain",
+          "link_type": "tickets"
+        },
+        {
+          "source": "Vividseats.com",
+          "link": "https://www.vividseats.com/rain---kpop-tickets-brooklyn-barclays-center-11-23-2025--concerts-k-pop/production/6015088",
+          "link_type": "tickets"
+        }
+      ],
+      "venue": {
+        "name": "Barclays Center",
+        "rating": 4.5,
+        "reviews": 22325,
+        "link": "https://www.google.com/search?sca_esv=fdbee006c2834579&gl=us&hl=en&q=Barclays+Center&ludocid=13372475396672644766&ibp=gwp%3B0,7"
+      },
+      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1bX-_Feb_aLhI4I1GYFf6VN5RlsoQZhXIbsCs9YrcvHFVISoRWL8Rtdo&s"
+    }
+  ]
+}

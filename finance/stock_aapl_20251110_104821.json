@@ -1,0 +1,253 @@
+{
+  "search_metadata": {
+    "search_id": "stock_aapl_20251110_104821",
+    "symbol": "AAPL",
+    "exchange": null,
+    "query": "AAPL",
+    "window": null,
+    "search_timestamp": "2025-11-10T10:48:21.686840",
+    "search_type": "stock"
+  },
+  "summary": {},
+  "graph": [],
+  "knowledge_graph": {},
+  "news_results": [],
+  "financials": [],
+  "key_events": [],
+  "discover_more": [
+    {
+      "title": "You may be interested in",
+      "items": [
+        {
+          "stock": ".INX:INDEXSP",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=.INX%3AINDEXSP",
+          "link": "https://www.google.com/finance/quote/.INX:INDEXSP",
+          "name": "S&P 500",
+          "price": "6,728.80",
+          "extracted_price": 6728.8,
+          "price_movement": {
+            "percentage": 0.13,
+            "movement": "Up"
+          }
+        },
+        {
+          "stock": ".DJI:INDEXDJX",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=.DJI%3AINDEXDJX",
+          "link": "https://www.google.com/finance/quote/.DJI:INDEXDJX",
+          "name": "Dow Jones Industrial Average",
+          "price": "46,987.10",
+          "extracted_price": 46987.1,
+          "price_movement": {
+            "percentage": 0.16,
+            "movement": "Up"
+          }
+        },
+        {
+          "stock": "TSLA:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=TSLA%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/TSLA:NASDAQ",
+          "name": "Tesla Inc",
+          "price": "$429.52",
+          "extracted_price": 429.52,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 3.68,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "AAPL:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=AAPL%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/AAPL:NASDAQ",
+          "name": "Apple Inc",
+          "price": "$268.47",
+          "extracted_price": 268.47,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.48,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "GOOG:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=GOOG%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/GOOG:NASDAQ",
+          "name": "Alphabet Inc Class C",
+          "price": "$279.70",
+          "extracted_price": 279.7,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 1.98,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "AMZN:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=AMZN%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/AMZN:NASDAQ",
+          "name": "Amazon.com Inc",
+          "price": "$244.41",
+          "extracted_price": 244.41,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.56,
+            "movement": "Up"
+          }
+        },
+        {
+          "stock": "BABA:NYSE",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=BABA%3ANYSE",
+          "link": "https://www.google.com/finance/quote/BABA:NYSE",
+          "name": "Alibaba Group Holding Ltd - ADR",
+          "price": "$166.34",
+          "extracted_price": 166.34,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.76,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "META:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=META%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/META:NASDAQ",
+          "name": "Meta Platforms Inc",
+          "price": "$621.71",
+          "extracted_price": 621.71,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.45,
+            "movement": "Up"
+          }
+        },
+        {
+          "stock": "MSFT:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=MSFT%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/MSFT:NASDAQ",
+          "name": "Microsoft Corp",
+          "price": "$496.82",
+          "extracted_price": 496.82,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.056,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "GOOGL:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=GOOGL%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/GOOGL:NASDAQ",
+          "name": "Alphabet Inc Class A",
+          "price": "$278.83",
+          "extracted_price": 278.83,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 2.08,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "NVDA:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=NVDA%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/NVDA:NASDAQ",
+          "name": "NVIDIA Corp",
+          "price": "$188.15",
+          "extracted_price": 188.15,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.037,
+            "movement": "Up"
+          }
+        },
+        {
+          "stock": "SPY:NYSEARCA",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=SPY%3ANYSEARCA",
+          "link": "https://www.google.com/finance/quote/SPY:NYSEARCA",
+          "name": "SPDR S&P 500 ETF Trust",
+          "price": "$670.97",
+          "extracted_price": 670.97,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.098,
+            "movement": "Up"
+          }
+        },
+        {
+          "stock": "MS:NYSE",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=MS%3ANYSE",
+          "link": "https://www.google.com/finance/quote/MS:NYSE",
+          "name": "Morgan Stanley",
+          "price": "$162.36",
+          "extracted_price": 162.36,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.65,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "VIX:INDEXCBOE",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=VIX%3AINDEXCBOE",
+          "link": "https://www.google.com/finance/quote/VIX:INDEXCBOE",
+          "name": "VIX",
+          "price": "18.62",
+          "extracted_price": 18.62,
+          "price_movement": {
+            "percentage": 4.51,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "NFLX:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=NFLX%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/NFLX:NASDAQ",
+          "name": "Netflix Inc",
+          "price": "$1,103.66",
+          "extracted_price": 1103.66,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.61,
+            "movement": "Up"
+          }
+        },
+        {
+          "stock": "NXST:NASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=NXST%3ANASDAQ",
+          "link": "https://www.google.com/finance/quote/NXST:NASDAQ",
+          "name": "Nexstar Media Group Inc",
+          "price": "$190.65",
+          "extracted_price": 190.65,
+          "currency": "$",
+          "price_movement": {
+            "percentage": 0.71,
+            "movement": "Up"
+          }
+        },
+        {
+          "stock": ".IXIC:INDEXNASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=.IXIC%3AINDEXNASDAQ",
+          "link": "https://www.google.com/finance/quote/.IXIC:INDEXNASDAQ",
+          "name": "Nasdaq Composite",
+          "price": "23,004.54",
+          "extracted_price": 23004.54,
+          "price_movement": {
+            "percentage": 0.21,
+            "movement": "Down"
+          }
+        },
+        {
+          "stock": "NDX:INDEXNASDAQ",
+          "serpapi_link": "https://serpapi.com/search.json?engine=google_finance&hl=en&q=NDX%3AINDEXNASDAQ",
+          "link": "https://www.google.com/finance/quote/NDX:INDEXNASDAQ",
+          "name": "Nasdaq-100",
+          "price": "25,059.81",
+          "extracted_price": 25059.81,
+          "price_movement": {
+            "percentage": 0.28,
+            "movement": "Down"
+          }
+        }
+      ]
+    }
+  ]
+}

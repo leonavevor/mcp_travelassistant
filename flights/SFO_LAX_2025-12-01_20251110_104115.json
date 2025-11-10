@@ -1,0 +1,868 @@
+{
+  "search_metadata": {
+    "search_id": "SFO_LAX_2025-12-01_20251110_104115",
+    "departure": "SFO",
+    "arrival": "LAX",
+    "outbound_date": "2025-12-01",
+    "return_date": null,
+    "trip_type": "One way",
+    "passengers": {
+      "adults": 1,
+      "children": 0,
+      "infants_in_seat": 0,
+      "infants_on_lap": 0
+    },
+    "travel_class": "Economy",
+    "currency": "USD",
+    "search_timestamp": "2025-11-10T10:41:15.731209"
+  },
+  "best_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 20:53"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 22:20"
+          },
+          "duration": 87,
+          "airplane": "Airbus A321neo",
+          "airline": "Frontier",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/F9.png",
+          "travel_class": "Economy",
+          "flight_number": "F9 2858",
+          "legroom": "28 in",
+          "extensions": [
+            "Below average legroom (28 in)",
+            "Carbon emissions estimate: 53 kg"
+          ],
+          "often_delayed_by_over_30_min": true
+        }
+      ],
+      "total_duration": 87,
+      "carbon_emissions": {
+        "this_flight": 53000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -45
+      },
+      "price": 74,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/F9.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pHT1RJNE5UZ2FDZ2pvT1JBQ0dnTlZVMFE0SEhEb09RPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIkY5IiwiMjg1OCJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 16:55"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 18:30"
+          },
+          "duration": 95,
+          "airplane": "Boeing 737MAX 8 Passenger",
+          "airline": "Southwest",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/WN.png",
+          "travel_class": "Economy",
+          "flight_number": "WN 537",
+          "legroom": "31 in",
+          "extensions": [
+            "Average legroom (31 in)",
+            "Free Wi-Fi",
+            "In-seat USB outlet",
+            "Stream media to your device",
+            "Carbon emissions estimate: 65 kg"
+          ]
+        }
+      ],
+      "total_duration": 95,
+      "carbon_emissions": {
+        "this_flight": 66000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -31
+      },
+      "price": 94,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/WN.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1ZYVGpVek54b0tDUEpJRUFJYUExVlRSRGdjY1BKSSIsW1siU0ZPIiwiMjAyNS0xMi0wMSIsIkxBWCIsbnVsbCwiV04iLCI1MzciXV1d"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 16:15"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 17:43"
+          },
+          "duration": 88,
+          "airplane": "Boeing 737",
+          "airline": "United",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+          "travel_class": "Economy",
+          "flight_number": "UA 1754",
+          "legroom": "30 in",
+          "extensions": [
+            "Average legroom (30 in)",
+            "Wi-Fi for a fee",
+            "In-seat power outlet",
+            "Stream media to your device",
+            "Carbon emissions estimate: 71 kg"
+          ]
+        }
+      ],
+      "total_duration": 88,
+      "carbon_emissions": {
+        "this_flight": 71000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -26
+      },
+      "price": 100,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pWUVRFM05UUWFDZ2pUVFJBQ0dnTlZVMFE0SEhEVFRRPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIlVBIiwiMTc1NCJdXV0="
+    }
+  ],
+  "other_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 22:59"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-02 00:30"
+          },
+          "duration": 91,
+          "airplane": "Airbus A320",
+          "airline": "United",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+          "travel_class": "Economy",
+          "flight_number": "UA 2179",
+          "legroom": "30 in",
+          "extensions": [
+            "Average legroom (30 in)",
+            "Wi-Fi for a fee",
+            "In-seat power & USB outlets",
+            "Stream media to your device",
+            "Carbon emissions estimate: 79 kg"
+          ]
+        }
+      ],
+      "total_duration": 91,
+      "carbon_emissions": {
+        "this_flight": 79000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -18
+      },
+      "price": 87,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pWUVRJeE56a2FDZ2pKUXhBQ0dnTlZVMFE0SEhESlF3PT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIlVBIiwiMjE3OSJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 21:15"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 22:50"
+          },
+          "duration": 95,
+          "airplane": "Boeing 737",
+          "airline": "Delta",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+          "travel_class": "Economy",
+          "flight_number": "DL 1554",
+          "legroom": "31 in",
+          "extensions": [
+            "Average legroom (31 in)",
+            "Free Wi-Fi",
+            "In-seat power & USB outlets",
+            "Live TV",
+            "Carbon emissions estimate: 71 kg"
+          ]
+        }
+      ],
+      "total_duration": 95,
+      "carbon_emissions": {
+        "this_flight": 72000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -25
+      },
+      "price": 97,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pFVERFMU5UUWFDZ2l3U3hBQ0dnTlZVMFE0SEhDd1N3PT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIkRMIiwiMTU1NCJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 20:35"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 22:00"
+          },
+          "duration": 85,
+          "airplane": "Boeing 737",
+          "airline": "Southwest",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/WN.png",
+          "travel_class": "Economy",
+          "flight_number": "WN 1549",
+          "legroom": "31 in",
+          "extensions": [
+            "Average legroom (31 in)",
+            "Free Wi-Fi",
+            "Stream media to your device",
+            "Carbon emissions estimate: 84 kg"
+          ]
+        }
+      ],
+      "total_duration": 85,
+      "carbon_emissions": {
+        "this_flight": 84000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -13
+      },
+      "price": 104,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/WN.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pYVGpFMU5Ea2FDZ2phVUJBQ0dnTlZVMFE0SEhEYVVBPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIldOIiwiMTU0OSJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 22:02"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 23:36"
+          },
+          "duration": 94,
+          "airplane": "Embraer 175",
+          "airline": "Alaska",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AS.png",
+          "travel_class": "Economy",
+          "flight_number": "AS 3013",
+          "ticket_also_sold_by": [
+            "Hawaiian"
+          ],
+          "legroom": "31 in",
+          "extensions": [
+            "Average legroom (31 in)",
+            "Wi-Fi for a fee",
+            "Stream media to your device",
+            "Carbon emissions estimate: 104 kg"
+          ],
+          "plane_and_crew_by": "SkyWest Airlines as Alaska SkyWest"
+        }
+      ],
+      "total_duration": 94,
+      "carbon_emissions": {
+        "this_flight": 105000,
+        "typical_for_this_route": 96000,
+        "difference_percent": 9
+      },
+      "price": 124,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AS.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pCVXpNd01UTWFDZ2lyWUJBQ0dnTlZVMFE0SEhDcllBPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIkFTIiwiMzAxMyJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 21:24"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 22:52"
+          },
+          "duration": 88,
+          "airplane": "Boeing 737",
+          "airline": "United",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+          "travel_class": "Economy",
+          "flight_number": "UA 564",
+          "legroom": "30 in",
+          "extensions": [
+            "Average legroom (30 in)",
+            "Wi-Fi for a fee",
+            "In-seat power outlet",
+            "Stream media to your device",
+            "Carbon emissions estimate: 71 kg"
+          ],
+          "often_delayed_by_over_30_min": true
+        }
+      ],
+      "total_duration": 88,
+      "carbon_emissions": {
+        "this_flight": 71000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -26
+      },
+      "price": 126,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1ZWUVRVMk5Cb0tDSkZpRUFJYUExVlRSRGdjY0pGaSIsW1siU0ZPIiwiMjAyNS0xMi0wMSIsIkxBWCIsbnVsbCwiVUEiLCI1NjQiXV1d"
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 18:55"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 20:26"
+          },
+          "duration": 91,
+          "airplane": "Boeing 737",
+          "airline": "United",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+          "travel_class": "Economy",
+          "flight_number": "UA 1800",
+          "legroom": "30 in",
+          "extensions": [
+            "Average legroom (30 in)",
+            "Wi-Fi for a fee",
+            "In-seat power outlet",
+            "Stream media to your device",
+            "Carbon emissions estimate: 71 kg"
+          ]
+        }
+      ],
+      "total_duration": 91,
+      "carbon_emissions": {
+        "this_flight": 71000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -26
+      },
+      "price": 134,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/UA.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pWUVRFNE1EQWFDZ2lCYUJBQ0dnTlZVMFE0SEhDQmFBPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIlVBIiwiMTgwMCJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 10:39"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 12:10"
+          },
+          "duration": 91,
+          "airplane": "Boeing 737",
+          "airline": "Delta",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+          "travel_class": "Economy",
+          "flight_number": "DL 1715",
+          "legroom": "31 in",
+          "extensions": [
+            "Average legroom (31 in)",
+            "Free Wi-Fi",
+            "In-seat power & USB outlets",
+            "Live TV",
+            "Carbon emissions estimate: 78 kg"
+          ]
+        }
+      ],
+      "total_duration": 91,
+      "carbon_emissions": {
+        "this_flight": 78000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -19
+      },
+      "price": 139,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pFVERFM01UVWFDZ2lZYkJBQ0dnTlZVMFE0SEhDWWJBPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIkRMIiwiMTcxNSJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 12:25"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 13:56"
+          },
+          "duration": 91,
+          "airplane": "Boeing 737",
+          "airline": "Delta",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+          "travel_class": "Economy",
+          "flight_number": "DL 2272",
+          "legroom": "31 in",
+          "extensions": [
+            "Average legroom (31 in)",
+            "Free Wi-Fi",
+            "In-seat power & USB outlets",
+            "Live TV",
+            "Carbon emissions estimate: 78 kg"
+          ],
+          "often_delayed_by_over_30_min": true
+        }
+      ],
+      "total_duration": 91,
+      "carbon_emissions": {
+        "this_flight": 78000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -19
+      },
+      "price": 139,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pFVERJeU56SWFDZ2lZYkJBQ0dnTlZVMFE0SEhDWWJBPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIkRMIiwiMjI3MiJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 18:43"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 20:14"
+          },
+          "duration": 91,
+          "airplane": "Boeing 737",
+          "airline": "Delta",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+          "travel_class": "Economy",
+          "flight_number": "DL 1167",
+          "legroom": "31 in",
+          "extensions": [
+            "Average legroom (31 in)",
+            "Free Wi-Fi",
+            "In-seat power & USB outlets",
+            "Live TV",
+            "Carbon emissions estimate: 71 kg"
+          ]
+        }
+      ],
+      "total_duration": 91,
+      "carbon_emissions": {
+        "this_flight": 72000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -25
+      },
+      "price": 139,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DL.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pFVERFeE5qY2FDZ2lZYkJBQ0dnTlZVMFE0SEhDWWJBPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIkRMIiwiMTE2NyJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "San Francisco International Airport",
+            "id": "SFO",
+            "time": "2025-12-01 10:50"
+          },
+          "arrival_airport": {
+            "name": "Los Angeles International Airport",
+            "id": "LAX",
+            "time": "2025-12-01 12:15"
+          },
+          "duration": 85,
+          "airplane": "Boeing 737",
+          "airline": "Southwest",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/WN.png",
+          "travel_class": "Economy",
+          "flight_number": "WN 2553",
+          "legroom": "31 in",
+          "extensions": [
+            "Average legroom (31 in)",
+            "Free Wi-Fi",
+            "In-seat USB outlet",
+            "Stream media to your device",
+            "Carbon emissions estimate: 74 kg"
+          ]
+        }
+      ],
+      "total_duration": 85,
+      "carbon_emissions": {
+        "this_flight": 75000,
+        "typical_for_this_route": 96000,
+        "difference_percent": -22
+      },
+      "price": 141,
+      "type": "One way",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/WN.png",
+      "extensions": [
+        "Checked baggage for a fee"
+      ],
+      "booking_token": "WyJDalJJTldsRlMySmpjMDFFY1RSQlIwRTBkRkZDUnkwdExTMHRMUzB0TFhsc1pXTXhPVUZCUVVGQlIydFNjM3B6UVhoQlpWbEJFZ1pYVGpJMU5UTWFDZ2pPYlJBQ0dnTlZVMFE0SEhET2JRPT0iLFtbIlNGTyIsIjIwMjUtMTItMDEiLCJMQVgiLG51bGwsIldOIiwiMjU1MyJdXV0="
+    }
+  ],
+  "price_insights": {
+    "lowest_price": 74,
+    "price_level": "typical",
+    "typical_price_range": [
+      25,
+      100
+    ],
+    "price_history": [
+      [
+        1757574000,
+        54
+      ],
+      [
+        1757660400,
+        43
+      ],
+      [
+        1757746800,
+        89
+      ],
+      [
+        1757833200,
+        89
+      ],
+      [
+        1757919600,
+        89
+      ],
+      [
+        1758006000,
+        89
+      ],
+      [
+        1758092400,
+        87
+      ],
+      [
+        1758178800,
+        86
+      ],
+      [
+        1758265200,
+        89
+      ],
+      [
+        1758351600,
+        89
+      ],
+      [
+        1758438000,
+        89
+      ],
+      [
+        1758524400,
+        89
+      ],
+      [
+        1758610800,
+        86
+      ],
+      [
+        1758697200,
+        86
+      ],
+      [
+        1758783600,
+        86
+      ],
+      [
+        1758870000,
+        89
+      ],
+      [
+        1758956400,
+        89
+      ],
+      [
+        1759042800,
+        89
+      ],
+      [
+        1759129200,
+        89
+      ],
+      [
+        1759215600,
+        65
+      ],
+      [
+        1759302000,
+        47
+      ],
+      [
+        1759388400,
+        47
+      ],
+      [
+        1759474800,
+        47
+      ],
+      [
+        1759561200,
+        47
+      ],
+      [
+        1759647600,
+        47
+      ],
+      [
+        1759734000,
+        47
+      ],
+      [
+        1759820400,
+        47
+      ],
+      [
+        1759906800,
+        47
+      ],
+      [
+        1759993200,
+        47
+      ],
+      [
+        1760079600,
+        34
+      ],
+      [
+        1760166000,
+        34
+      ],
+      [
+        1760252400,
+        34
+      ],
+      [
+        1760338800,
+        34
+      ],
+      [
+        1760425200,
+        64
+      ],
+      [
+        1760511600,
+        29
+      ],
+      [
+        1760598000,
+        29
+      ],
+      [
+        1760684400,
+        29
+      ],
+      [
+        1760770800,
+        49
+      ],
+      [
+        1760857200,
+        49
+      ],
+      [
+        1760943600,
+        43
+      ],
+      [
+        1761030000,
+        43
+      ],
+      [
+        1761116400,
+        54
+      ],
+      [
+        1761202800,
+        74
+      ],
+      [
+        1761289200,
+        74
+      ],
+      [
+        1761375600,
+        74
+      ],
+      [
+        1761462000,
+        74
+      ],
+      [
+        1761548400,
+        74
+      ],
+      [
+        1761634800,
+        74
+      ],
+      [
+        1761721200,
+        74
+      ],
+      [
+        1761807600,
+        74
+      ],
+      [
+        1761894000,
+        74
+      ],
+      [
+        1761980400,
+        74
+      ],
+      [
+        1762066800,
+        74
+      ],
+      [
+        1762156800,
+        74
+      ],
+      [
+        1762243200,
+        74
+      ],
+      [
+        1762329600,
+        70
+      ],
+      [
+        1762416000,
+        70
+      ],
+      [
+        1762502400,
+        74
+      ],
+      [
+        1762588800,
+        69
+      ],
+      [
+        1762675200,
+        69
+      ],
+      [
+        1762761600,
+        74
+      ]
+    ]
+  },
+  "airports": [
+    {
+      "departure": [
+        {
+          "airport": {
+            "id": "SFO",
+            "name": "San Francisco International Airport"
+          },
+          "city": "San Francisco",
+          "country": "United States",
+          "country_code": "US",
+          "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQhLXJKshv7iRU8OcvmRyc3ZHyoSy8ZfBGcntDNb8iTixSq8i7XIcn9tZMPIcM6-rm7kKcu2VQS3BKoYw",
+          "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRbcxCKTUaj5vz8PrFeUUBVCm8J3fXiMRJpnz4UfNsPeLOkP1EZK9sez1dEX--y-VLxpPAaVB5zo1hzXliHeLl3l0VFwrWrVz7UCQpkzCY"
+        }
+      ],
+      "arrival": [
+        {
+          "airport": {
+            "id": "LAX",
+            "name": "Los Angeles International Airport"
+          },
+          "city": "Los Angeles",
+          "country": "United States",
+          "country_code": "US",
+          "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTFuS2Y5_b7ZIl-g2Hm7jnG7zoi2uk0CQltF_DFbp6gIzfYznnOB6uJm9d6ePT5PJO5XM1j8vigwCNxRA",
+          "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT4B0K7etaN3KgEgtU5dJajdcmLtB5QSDRYr4KqcwH1iWxMm7TIqwtcUTTHD5AmNyeeFIpVpTnbSDeuD_HVlkYzOam-TO9w1worRSGRTUo"
+        }
+      ]
+    }
+  ]
+}

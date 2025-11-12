@@ -1,5 +1,9 @@
 import argparse
-from .event_server import mcp
+try:
+    from .event_server import mcp
+except Exception:
+    from py_mcp_travelplanner.event_server.event_server import mcp
+
 
 def main():
     parser = argparse.ArgumentParser(description="Event MCP Server entrypoint")
@@ -16,7 +20,7 @@ def main():
 
     if args.transport == 'http':
         print(f"Starting event-server on http://{args.host}:{args.port}")
-        mcp.run(transport='http', host=args.host, port=args.port)
+        mcp.run(transport='http', port=args.port)
     else:
         print("Starting event-server with stdio transport")
         mcp.run(transport='stdio')

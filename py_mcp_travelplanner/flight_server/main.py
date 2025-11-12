@@ -1,5 +1,8 @@
 import argparse
-from .flight_server import mcp
+try:
+    from .flight_server import mcp
+except Exception:
+    from py_mcp_travelplanner.flight_server.flight_server import mcp
 
 
 def main():
@@ -17,7 +20,7 @@ def main():
 
     if args.transport == 'http':
         print(f"Starting flight-server on http://{args.host}:{args.port}")
-        mcp.run(transport='http', host=args.host, port=args.port)
+        mcp.run(transport='http', port=args.port)
     else:
         print("Starting flight-server with stdio transport")
         mcp.run(transport='stdio')

@@ -1,5 +1,8 @@
 import argparse
-from .geocoder_server import mcp
+try:
+    from .geocoder_server import mcp
+except Exception:
+    from py_mcp_travelplanner.geocoder_server.geocoder_server import mcp
 
 
 def main():
@@ -17,7 +20,8 @@ def main():
 
     if args.transport == 'http':
         print(f"Starting geocoder-server on http://{args.host}:{args.port}")
-        mcp.run(transport='http', host=args.host, port=args.port)
+        # FastMCP.run() in this project accepts 'transport' and 'port' but no 'host' kwarg
+        mcp.run(transport='http', port=args.port)
     else:
         print("Starting geocoder-server with stdio transport")
         mcp.run(transport='stdio')

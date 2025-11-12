@@ -1,5 +1,8 @@
 import argparse
-from .finance_server import mcp
+try:
+    from .finance_server import mcp
+except Exception:
+    from py_mcp_travelplanner.finance_server.finance_server import mcp
 
 
 def main():
@@ -17,7 +20,7 @@ def main():
 
     if args.transport == 'http':
         print(f"Starting finance-server on http://{args.host}:{args.port}")
-        mcp.run(transport='http', host=args.host, port=args.port)
+        mcp.run(transport='http', port=args.port)
     else:
         print("Starting finance-server with stdio transport")
         mcp.run(transport='stdio')

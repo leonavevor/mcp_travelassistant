@@ -1,5 +1,10 @@
 import argparse
-from .weather_server import mcp
+try:
+    # Prefer relative import when run as a package
+    from .weather_server import mcp
+except Exception:
+    # Fallback to absolute import when run as a script
+    from py_mcp_travelplanner.weather_server.weather_server import mcp
 
 
 def main():
@@ -18,7 +23,8 @@ def main():
 
     if args.transport == 'http':
         print(f"Starting weather-server on http://{args.host}:{args.port}")
-        mcp.run(transport='http', host=args.host, port=args.port)
+        # FastMCP.run() does not accept a 'host' keyword in this project; only pass port
+        mcp.run(transport='http', port=args.port)
     else:
         print("Starting weather-server with stdio transport")
         mcp.run(transport='stdio')
